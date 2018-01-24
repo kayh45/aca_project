@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.musicon.dto.BoardPerformanceVO;
 import com.musicon.dto.BoardReplyVO;
 import com.musicon.dto.BoardVO;
 import com.musicon.util.DBManager;
@@ -25,10 +26,12 @@ public class BoardDAO {
 	}
 	
 	// 리뷰게시판
-	public List<BoardVO> selectAllReview(){ 
-		String sql = "select * from board where brd_div='review' order by brd_no desc";
-		
-		List<BoardVO> list = new ArrayList<BoardVO>();
+	public List<BoardPerformanceVO> selectAllReview(){ 
+		// 조인 추가 했음 -현
+		String sql = "select * from board b, performance p, member m "
+				+ "where b.pfm_no = p.pfm_no and b.mem_no = m.mem_no "
+				+ "and brd_div='review' order by brd_no desc";
+		List<BoardPerformanceVO> list = new ArrayList<BoardPerformanceVO>();
 		Connection conn = null;
 		Statement stmt = null;
 		ResultSet rs = null;
@@ -40,7 +43,8 @@ public class BoardDAO {
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()){
-				BoardVO bVo = new BoardVO();
+				
+				BoardPerformanceVO bVo = new BoardPerformanceVO();
 				
 				bVo.setBrd_no(rs.getInt("brd_no"));
 				bVo.setBrd_div(rs.getString("brd_div"));
@@ -49,8 +53,11 @@ public class BoardDAO {
 				bVo.setBrd_date(rs.getString("brd_date"));
 				bVo.setBrd_view(rs.getInt("brd_view"));
 				bVo.setBrd_like(rs.getInt("brd_like"));
-				bVo.setBrd_content(rs.getString("brd_content"));
-				bVo.setPfm_no(rs.getInt("pfm_no"));
+				bVo.setBrd_content(rs.getString("brd_content"));				
+				bVo.setPfm_div(rs.getString("pfm_div"));
+				bVo.setMem_nick(rs.getString("mem_nick"));
+				
+				System.out.println(sql);
 				
 				list.add(bVo);
 			}
@@ -62,8 +69,8 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public void insertReview(BoardVO bVo){
-		String sql = "insert into board(brd_no, brd_div, brd_subject, brd_content, mem_no) values (brd_seq.nextval, 'review', ?, ?, ?);";
+	public void insertReview(BoardPerformanceVO bVo){
+		String sql = "insert into board(brd_no, brd_div, brd_subject, brd_content, mem_no, pfm_no) values (brd_seq.nextval, 'review', ?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -75,6 +82,7 @@ public class BoardDAO {
 			pstmt.setString(1, bVo.getBrd_subject());
 			pstmt.setString(2, bVo.getBrd_content());
 			pstmt.setInt(3, bVo.getMem_no());
+			pstmt.setInt(4, bVo.getPfm_no());
 			
 			pstmt.executeUpdate();
 		} catch(Exception e){
@@ -105,10 +113,11 @@ public class BoardDAO {
 	}
 	
 	// 게시판 글 상세 내용 보기 : 글번호로 찾아온다. : 실패 null,
-	public BoardVO selectOneReviewByBrd_no(String brd_no){
-		String sql = "select * from board where brd_no=?";
+	public BoardPerformanceVO selectOneReviewByBrd_no(String brd_no){
+		String sql = "select * from board b, performance p "
+				+ "where b.pfm_no = p.pfm_no and brd_no=?";
 		
-		BoardVO bVo = null;
+		BoardPerformanceVO bVo = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -122,7 +131,7 @@ public class BoardDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				bVo = new BoardVO();
+				bVo = new BoardPerformanceVO();
 				
 				bVo.setBrd_no(rs.getInt("brd_no"));
 				bVo.setBrd_div(rs.getString("brd_div"));
@@ -133,6 +142,11 @@ public class BoardDAO {
 				bVo.setBrd_like(rs.getInt("brd_like"));
 				bVo.setBrd_content(rs.getString("brd_content"));
 				bVo.setPfm_no(rs.getInt("pfm_no"));
+				bVo.setPfm_div(rs.getString("pfm_div"));
+				bVo.setPfm_subject(rs.getString("pfm_subject"));
+				bVo.setPfm_loc(rs.getString("pfm_loc"));
+				bVo.setPfm_start(rs.getString("pfm_start"));
+				bVo.setPfm_actor(rs.getString("pfm_actor"));
 			}
 		} catch(Exception e){
 			e.printStackTrace();

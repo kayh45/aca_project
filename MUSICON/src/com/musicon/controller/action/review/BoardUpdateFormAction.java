@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.musicon.controller.action.Action;
 import com.musicon.dao.BoardDAO;
-import com.musicon.dto.BoardVO;
+import com.musicon.dto.BoardPerformanceVO;
 
 public class BoardUpdateFormAction implements Action{
 
@@ -23,7 +23,7 @@ public class BoardUpdateFormAction implements Action{
 		
 		bDao.updateBrdView(brd_no);
 		
-		BoardVO bVo = bDao.selectOneReviewByBrd_no(brd_no);
+		BoardPerformanceVO bVo = bDao.selectOneReviewByBrd_no(brd_no);
 		
 		request.setAttribute("board", bVo);
 		

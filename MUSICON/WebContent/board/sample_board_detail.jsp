@@ -3,9 +3,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel = "stylesheet" type = "text/css" href = "css/common.css">
-<link rel = "stylesheet" type = "text/css" href = "css/board.css">
-<link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
+<link rel = "stylesheet" type = "text/css" href = "../css/common.css">
+<link rel = "stylesheet" type = "text/css" href = "../css/board.css">
+<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
@@ -37,7 +37,7 @@
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "info">
-										<img src = "img/abposter.jpg" width = "100px">
+										<img src = "../img/abposter.jpg" width = "100px">
 									</div>
 									<div class = "info">
 										<p>공연명: 안녕바다 연말공연 〈snow waltz〉</p>
@@ -53,8 +53,8 @@
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "dtl_content">
-										<img src = "img/abdetail01.jpg">
-										<img src = "img/abdetail02.jpg">
+										<img src = "../img/abdetail01.jpg">
+										<img src = "../img/abdetail02.jpg">
 										<p>주말에 공연 다녀왔어요</p>
 										<p>너무 좋았습니다.</p>
 									</div>
@@ -63,9 +63,9 @@
 										<div class = "div_like"><span>15</span></div>
 										<button class = "btn_like">공유</button>
 										<div class = "div_like">
-											<img src = "img/twitter.png" width = "25px">
-											<img src = "img/facebook.png" width = "25px">
-											<img src = "img/rss.png" width = "25px">
+											<img src = "../img/twitter.png" width = "25px">
+											<img src = "../img/facebook.png" width = "25px">
+											<img src = "../img/rss.png" width = "25px">
 										</div>
 									</div>
 								</td> 

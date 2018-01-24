@@ -10,14 +10,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.musicon.controller.action.Action;
 import com.musicon.dao.BoardDAO;
+import com.musicon.dto.BoardPerformanceVO;
 import com.musicon.dto.BoardReplyVO;
-import com.musicon.dto.BoardVO;
 
 public class BoardViewAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/boardView.jsp";
+		String url = "/board/board_review_detail.jsp";
 		
 		String brd_no = request.getParameter("brd_no");
 		
@@ -25,7 +25,7 @@ public class BoardViewAction implements Action{
 		
 		bDao.updateBrdView(brd_no);
 		
-		BoardVO bVo = bDao.selectOneReviewByBrd_no(brd_no);
+		BoardPerformanceVO bVo = bDao.selectOneReviewByBrd_no(brd_no);
 		List<BoardReplyVO> boardReplyList = bDao.selectAllBrpl(brd_no);
 		
 		request.setAttribute("board", bVo);

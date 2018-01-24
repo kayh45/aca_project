@@ -156,6 +156,26 @@
 	color : #e88500;
 	border : solid 1px #e88500;
 }
+.theme > .classic {
+	border-radius : 2px;
+	margin : 1px auto;
+	padding : 1px;
+	width : 40px;
+	height : 20px;
+	background-color : #ffd9a6;
+	color : #e88500;
+	border : solid 1px #e88500;
+}
+.theme > .korean {
+	border-radius : 2px;
+	margin : 1px auto;
+	padding : 1px;
+	width : 40px;
+	height : 20px;
+	background-color : #f583a5;
+	color : #650723;
+	border : solid 1px #e91253;
+}
 .theme > .musical {
 	border-radius : 2px;
 	margin : 1px auto;
@@ -333,6 +353,7 @@ td > a {
 .info > p {
 	vertical-align : middle;
 	margin : 5px 0;
+	width : 240px;
 }
 
 .new_wdw {
@@ -345,6 +366,7 @@ td > a {
 
 .dtl_content {
 	text-align : left;
+	padding : 10px;
 }
 
 .dtl_content p {
@@ -473,4 +495,19 @@ td > a {
 
 .td_content {
 	text-align : left;
+}
+
+
+#wrt_btns {
+	float : right;
+	margin : 5px 0;
+}
+
+#wrt_btns input[type = button] {
+	width : 80px;
+	height : 30px;
+	border : none;
+	background-color : #b1d7e9;
+	font-size : 15px;
+	
 }

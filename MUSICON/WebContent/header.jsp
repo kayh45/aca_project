@@ -16,7 +16,7 @@
 						<img src = "img/icon2.png">
 					</button>
 					
-					<button type="button" class="btn btn-link" onclick = "location.href= 'board.do'">
+					<button type="button" class="btn btn-link" onclick = "location.href= 'board.do?command=board_list'">
 						<span class = bt_text>게시판</span>
 					</button>
 				</li>

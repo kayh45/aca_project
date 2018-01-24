@@ -29,11 +29,11 @@ public class ActionFactory {
 	
 		if(command.equals("board_list")){
 			action = new BoardListAction();
-		} else if(command.equals("board_write_form")){
+		} else if(command.equals("review_write_form")){
 			action = new BoardWriteFormAction();
-		} else if(command.equals("board_write")){
+		} else if(command.equals("review_write")){
 			action = new BoardWriteAction();
-		} else if(command.equals("board_view")){
+		} else if(command.equals("review_view")){
 			action = new BoardViewAction();
 		} else if(command.equals("board_update_form")){
 			action = new BoardUpdateFormAction();

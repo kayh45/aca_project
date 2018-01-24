@@ -467,4 +467,23 @@ textarea {
 
 .td_content input[type = text] {
 	width : 100%;
+	hegiht : 15px;
+}
+
+.pfm_srch input[type = text]{
+	width : 30%;
+}
+
+.pfm_srch input[type = button]{
+	width : 15%;
+	margin : 0 8px;
+}
+
+#button_grp {
+	text-align : center;
+}
+
+#button_grp input{
+	width : 50px;
+	height : 30px;	
 }

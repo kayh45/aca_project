@@ -30,7 +30,7 @@
 				</div>
 					<div id = "rsbox">
 						<p class = "big_detail"><a href ="board_review.html" class = "headlink">공연 리뷰</a></p>
-						<form method = "post" action = "">
+						
 						<table id = "detail">
 							<tr class = "title">
 								<td class = "number_detail">No.${board.brd_no}</td>
@@ -81,7 +81,7 @@
 									</div>
 								</td> 
 							</tr>
-							<c:foreach var = "board_reply" items = "${board_reply_list}">
+							<c:forEach var = "board_reply" items = "${board_reply_list}">
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "dtl_comment">
@@ -100,9 +100,10 @@
 									</div>
 								</td>
 							</tr>
-							</c:foreach>							
+							</c:forEach>							
 							<tr class = "title" id = "cmt">
-								<td colspan = "3">
+							<td colspan = "3">
+								<form method = "post" action = "">
 									<input type = "hidden" name = "mem_no" value = "${loginUser.mem_no}">
 									<input type = "hidden" name = "brd_no" value = "${board.brd_no}">
 									<%-- ↑ 로그인 시 만들어진 세션으로 가져옴 --%>
@@ -112,11 +113,11 @@
 									<div class = "cmt_submit">
 										<button type = "submit">작성</button>
 									</div>
+								</form>
 								</td>
 								
 							</tr>							
 						</table>
-						</form>
 					</div>
 			</div>
 			</div>

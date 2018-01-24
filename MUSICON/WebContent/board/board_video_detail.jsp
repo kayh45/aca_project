@@ -42,10 +42,10 @@
 								<td colspan = "3">
 									<div class = "dtl_content">
 										<c:choose>
-											<c:when  test = "${board.brd_vid != null}">
+											<c:when test = "${board.brd_vid != null}">
 												<c:set var = "prv_src" value = "https://www.youtube.com/embed/"/>
 												<c:set var = "vid_src" value = "${prv_src}${board.brd_vid}"/>
-												<iframe width="500" height="300" src="https://www.youtube.com/embed/i2xetg-4Xxw" 
+												<iframe width="500" height="300" src="${vid_src}" 
 												frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>							
 											</c:when>
 										<c:otherwise>

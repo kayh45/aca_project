@@ -1,32 +1,30 @@
-package com.musicon.controller.action.review;
+package com.musicon.controller.action;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.musicon.controller.action.Action;
-import com.musicon.dao.BoardDAO;
-import com.musicon.dto.BoardPerformanceVO;
+import com.musicon.dao.PerformanceDAO;
+import com.musicon.dto.PerformanceVO;
 
-public class BoardListAction implements Action{
+public class PerformanceGetAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/board_review.jsp";
-		
-		BoardDAO bDao = BoardDAO.getInstance();
-		
-		List<BoardPerformanceVO> boardList = bDao.selectAllReview();
-		
-		request.setAttribute("boardList", boardList);
-		
+		// TODO Auto-generated method stub
+
+		String url = "test2.jsp";
+
+		PerformanceDAO pDao = PerformanceDAO.getInstance();
+		PerformanceVO pVo = pDao.getPerformance(11);
+		request.setAttribute("Performance", pVo);
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		
 	}
-	
+
 }
