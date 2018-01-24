@@ -12,6 +12,8 @@ import com.musicon.controller.action.review.BoardWriteFormAction;
 
 public class ActionFactory {
 
+	//주석
+	
 	private static ActionFactory instance = new ActionFactory();
 	
 	private ActionFactory(){
