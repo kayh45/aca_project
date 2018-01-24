@@ -1,0 +1,164 @@
+#content {
+	display : block;	
+}
+
+#searchbar {
+	border : solid 1px #98cffc;
+	background-color : white;
+	margin : 2px auto;
+	height : 35px;
+	width : 700px;
+}
+
+#searchbar input {
+	border : none;
+}
+
+#txt_sc {
+	margin : 8px 10px;
+	width : 520px;
+	float : left;
+	font-size : 12px;
+}
+
+#btn_sc {
+	float : right;
+	margin : 3px;	
+}
+
+#checkbar {
+	border : solid 1px #98cffc;
+	border-bottom : solid 1px #98cffc;
+	height : 40px;
+	background-color : white;
+	margin : 10px auto 0 auto;
+	width : 700px;
+}
+
+#checkbar > input {
+	display : none;
+}
+
+#checkbar > label {
+	font-size : 15px;
+	float : left;
+	display : block;
+	padding: 8px 20px;
+    cursor: pointer;
+    transition: background-color .5s;
+}
+
+#checkbar > label:hover,
+#checkbar > input:checked + label{
+	background-color : #98cffc;
+}
+
+.result {
+	width : 700px;
+	margin : 20px auto;
+}
+
+.option {
+	text-align : right;	
+	padding-bottom : 2px;
+	margin-bottom : 5px;
+	border-bottom : solid 1px #b5b5b5;
+}
+
+.option a {
+	font-size : 12px;
+	text-align : right;
+	cursor : pointer;
+	text-decoration : none;
+	color : #3c3c3c;
+}
+
+#rsbox {
+	background-color : white;
+	border : solid 1px #98cffc;	
+	padding : 10px;
+}
+
+#rsbox table{
+	margin : 3px auto;
+	padding : 3px;
+	width : 650px;
+}
+
+#rsbox tr, 
+#rsbox td {
+	font-size : 11px;
+	padding : 3px;
+	border-bottom : solid 1px #ddd;
+	text-align : center;	
+}
+
+#rsbox tr:hover:not(.title) {
+	background-color : #bfe1fd;
+	transition: background-color .3s;
+}
+
+.picture img {
+	margin : 2px;
+	width : 80px;
+	height : 80px;	
+}
+
+.title td {
+	font-size : 16px;
+	padding : 3px;
+	padding-bottom : 5px;	
+}
+
+.pageno {
+	text-align : center;	
+}
+
+#keywordbar{
+	border : solid 1px #98cffc;
+	border-top : solid 1px #98cffc;
+	border-right : solid 1px #98cffc;
+	background-color : white;
+	width : 700px;	
+	margin : 2px auto;
+}
+
+#keywordbar table {
+	width: 100%
+}
+
+#keywordbar tr, 
+#keywordbar td {
+	border-bottom : solid 1px #ddd;
+	padding : 10px 5px;
+}
+.kwtitle {
+	vertical-align : middle;
+	width : 20%;
+	border-right : 0;
+	font-size : 14px;	
+	text-align : center;
+}
+.kwcontent {
+	border-left : solid 1px #98cffc;
+	width : 80%;	
+	text-align : left;
+	font-size : 13px;
+}
+
+.kwcontent  input[type="checkbox"] {
+	margin : 0 0 0 10px;
+	width : 10px;
+	cursor : pointer;	
+}  
+.kwcontent  label {
+	margin-left : 0;
+	padding-left : 5px;
+	cursor: pointer;
+} 
+
+.subject > a {
+	text-decoration : none;
+	color : black;
+	font-size : 14px;
+}

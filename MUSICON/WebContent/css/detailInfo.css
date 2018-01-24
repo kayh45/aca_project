@@ -1,0 +1,142 @@
+#dtlbox {
+	background-color : white;
+	border : solid 1px #98cffc;	
+	padding : 10px;
+}
+
+#content {
+	display : block;	
+}
+
+.result {
+	width : 700px;
+	margin : 20px auto;
+}
+
+.top_title {
+	font-size : 20px;
+	font-weight : bold;
+	margin-bottom : 15px;
+}
+
+#btn_group {
+	text-align : center;
+	display : inline-block;
+	margin : 0 auto;
+}
+
+.btn_like {
+	color : white;
+	font-size : 14px;
+	float : left;
+	border : none;
+	background-color : #5a688d;
+	padding : 2px 10px;
+	margin-left : 10px;
+	height : 30px;
+}
+
+.btn_like span {
+	font-size : 18px;
+}
+
+.div_like {
+	color : white;
+	font-size : 15px;
+	float : left;
+	border : none;
+	background-color : #a7b3c0;
+	padding : 2px 10px;
+	height : 30px;
+	font-weight : bold;
+}
+
+.div_like span {
+	margin : auto 2px;
+	vertical-align : middle;
+}
+
+.div_like img {
+	margin : 0;
+	cursor : pointer;
+}
+
+.top_body {
+	display : inline-block;
+	margin : 2px auto;
+	width : 600px;
+}
+
+.body_poster {
+	float : left;
+	width : 300px;
+	text-align : center;
+}
+
+.body_poster > img {
+	margin : 5px;
+}
+
+.body_title {
+	font-size : 17px;
+	border-bottom : double 3px black;
+	font-family: "±¼¸²",Gulim,sans-serif;
+	font-weight : bold;
+	padding-bottom : 5px;
+}
+
+.body_info {
+	float : right;
+	width : 300px;
+}
+
+.body_table {
+	width : 100%;
+	font-size : 15px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+}
+
+.body_table th{
+	padding : 10px;
+	width : 40%;
+	font-weight : bold;
+}
+
+.yeme {
+	margin-bottom : 2px;
+	text-align : right;
+}
+
+.middle_body {
+	border-top : solid 1px #ddd;
+	padding : 20px;
+	text-align : center;
+}
+
+.bottom_body {
+	border-top : solid 1px #ddd;
+	border-bottom : solid 1px #ddd;
+	padding : 20px;
+	text-align : center;
+	margin-bottom : 10px;
+}
+
+.bottom_body img {
+	width : 125px;
+	margin : 10px 20px;
+	cursor : pointer;
+}
+
+.innertitle {
+	margin-bottom : 10px;
+	text-align : left;
+}
+
+.innertitle span {
+	font-weight : bold;
+	font-family: "malgun gothic", Dotum, Arial, sans-serif;
+	margin : 10px;
+	padding-bottom : 3px;
+	font-size : 16px;
+	border-bottom : solid 1px black;
+}
+
