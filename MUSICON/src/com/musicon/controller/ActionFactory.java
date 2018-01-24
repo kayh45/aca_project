@@ -1,6 +1,9 @@
 package com.musicon.controller;
 
 import com.musicon.controller.action.Action;
+import com.musicon.controller.action.MemberJoinAction;
+import com.musicon.controller.action.MemberLoginAction;
+import com.musicon.controller.action.MemberLogoutAction;
 import com.musicon.controller.action.brpl.BrplWriteAction;
 import com.musicon.controller.action.review.BoardDeleteAction;
 import com.musicon.controller.action.review.BoardListAction;
@@ -45,6 +48,12 @@ public class ActionFactory {
 			action = new BoardDeleteAction();
 		} else if (command.equals("brpl_write")){
 			action = new BrplWriteAction();
+		} else if (command.equals("member_join")){
+			action = new MemberJoinAction();
+		} else if (command.equals("member_login")){
+			action = new MemberLoginAction();
+		} else if (command.equals("member_logout")){
+			action = new MemberLogoutAction();
 		}
 		
 		return action;
