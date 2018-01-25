@@ -15,7 +15,7 @@ public class BoardUpdateFormAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/boardUpdate.jsp";
+		String url = "/board/review/boardUpdate.jsp";
 		
 		String brd_no = request.getParameter("brd_no");
 		

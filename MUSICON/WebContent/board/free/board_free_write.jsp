@@ -9,24 +9,17 @@
 <link rel = "stylesheet" type = "text/css" href = "css/boardWrite.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>MUSICON :: 공연 리뷰 게시판</title>
 </head>
 <body>
 	<header>
-		<%@ include file = "../header.jsp" %>
+		<%@ include file = "../../header.jsp" %>
 	</header>
 	<div class = "bgdiv">
 			<!-- 컨텐츠 시작  -->
 		<div id = "content">
 			<div class = "menubar">
-				<ul>
-					<li id = "title"><a href = "board.html">게시판목록</a></li>
-					<li><a href = "#">자유게시판</a></li>
-					<li><a href = "board_review.html">공연 리뷰</a></li>
-					<li><a href = "#">정보 공유</a></li>
-					<li><a href = "#">사진갤러리</a></li>
-					<li><a href = "#">영상갤러리</a></li>
-				</ul>
+				<%@ include file = "../board_list.jsp" %>
 			</div>
 					<div id = "rsbox">
 						<form method = "post" action = "board.do?command=review_write">						
@@ -48,7 +41,7 @@
 										<input type = "text" name = "pfm_subject">
 										<input type = "text" name = "pfm_no">
 										<%--나중에 hidden으로 바꿔줌 --%>
-										<input type = "button" value = "검색">
+										<input id = "srch_btn" type = "button" value = "검색">
 										${inform}
 									</td>
 								</tr>
@@ -56,11 +49,11 @@
 									<td class = "td_subject">내용</td>
 									<td class = "td_content">
 										<textarea name = "brd_content" cols = "50" rows = "20"></textarea>
-									<input type = "text" name = mem_no>
+									<input type = "hidden" name = "mem_no" value = "${LoginUser.mem_no}">
 									</td>
 									
 								</tr>
-								<tr>
+								<tr class = "title">
 									<td colspan = "2" id = "button_grp">
 										<input type = "submit" value = "작성">
 										<input type = "button" value = "취소" onclick = "javascript:'history.go(-1)'">
@@ -75,7 +68,7 @@
 		<!-- 컨텐츠 끝  -->
 			</div>
 	<footer>
-		<%@ include file = "../footer.jsp" %>
+		<%@ include file = "../../footer.jsp" %>
 	</footer>
 </body>
 </html>

@@ -1,10 +1,13 @@
 package com.musicon.controller;
 
 import com.musicon.controller.action.Action;
+import com.musicon.controller.action.MemberInfoAction;
 import com.musicon.controller.action.MemberJoinAction;
 import com.musicon.controller.action.MemberJoinFormAction;
 import com.musicon.controller.action.MemberLoginAction;
 import com.musicon.controller.action.MemberLogoutAction;
+import com.musicon.controller.action.MemberUpdateAction;
+import com.musicon.controller.action.MemberUpdateFormAction;
 import com.musicon.controller.action.brpl.BrplWriteAction;
 import com.musicon.controller.action.review.BoardDeleteAction;
 import com.musicon.controller.action.review.BoardListAction;
@@ -33,7 +36,7 @@ public class ActionFactory {
 		
 		System.out.println("ActionFactory : " + command);
 	
-		if(command.equals("board_list")){
+		if(command.equals("review_list")){
 			action = new BoardListAction();
 		} else if(command.equals("review_write_form")){
 			action = new BoardWriteFormAction();
@@ -57,6 +60,12 @@ public class ActionFactory {
 			action = new MemberLoginAction();
 		} else if (command.equals("member_logout")){
 			action = new MemberLogoutAction();
+		} else if (command.equals("member_info")){
+			action = new MemberInfoAction();
+		} else if (command.equals("member_update_form")){
+			action = new MemberUpdateFormAction();
+		} else if (command.equals("member_update")){
+			action = new MemberUpdateAction();
 		}
 		
 		return action;

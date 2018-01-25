@@ -48,18 +48,47 @@
 .check_btn {
 	border: none;
 	width: 80px;
-	height: 30px;
-	background-color: #a0d5dc;
+	height: 35px;
+	font-weight : bold;
+	font-size : 15px;
+	color : white;
+	background-color: #897dce;
 }
 
 .button_grp input {
 	border: none;
-	width: 80px;
-	height: 30px;
-	background-color: #a0d5dc;
+	width: 100px;
+	height: 40px;
+	font-weight : bold;
+	font-size : 15px;
+	color : white;
+	background-color: #7cc5cf;
 }
 
 .button_grp td {
 	border-top: solid 1px #a8a8a8;
 	padding: 20px;
+}
+
+.info_table {
+	width : 60%;
+	margin : 10px auto;
+	font-size : 18px;
+}
+
+.info_table td {
+	padding : 10px;
+}
+
+.info_table .lbl {
+	background-color : #f3fafa;
+	font-size : 16px;
+	width : 100px;
+	font-weight : bold;
+	text-align : center;
+}
+
+.info_table .input {
+	font-size : 15px;
+	width : 70%
 }

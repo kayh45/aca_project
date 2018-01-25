@@ -9,24 +9,17 @@
 <link rel = "stylesheet" type = "text/css" href = "css/board.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>MUSICON :: 공연 리뷰 게시판</title>
 </head>
 <body>
 	<header>
-		<%@ include file = "../header.jsp" %>
+		<%@ include file = "../../header.jsp" %>
 	</header>
 	<div class = "bgdiv">
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<ul>
-						<li id = "title"><a href = "board.html">게시판목록</a></li>
-						<li><a href = "#">자유게시판</a></li>
-						<li><a href = "board_review.html">공연 리뷰</a></li>
-						<li><a href = "#">정보 공유</a></li>
-						<li><a href = "#">사진갤러리</a></li>
-						<li><a href = "#">영상갤러리</a></li>
-					</ul>
+					<%@ include file = "../board_list.jsp" %>
 				</div>
 					<div id = "rsbox">
 						<p class = "big_detail"><a href ="board_review.html" class = "headlink">공연 리뷰</a></p>
@@ -46,7 +39,8 @@
 									<div class = "info">
 										<p>공연명: ${board.pfm_subject}</p>
 										<p>장소: ${board.pfm_loc}</p>
-										<p>기간: ${board.pfm_start}</p>
+										<fmt:parseDate var="dateString" value = "${board.pfm_start}" pattern = "yyyy-MM-dd HH:mm:ss"/>
+										<p>기간: <fmt:formatDate value = "${dateString}" type = "date"/></p>
 										<p>출연: ${board.pfm_actor}</p>
 										<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
 									</div>
@@ -78,6 +72,16 @@
 											<img src = "img/facebook.png" width = "25px">
 											<img src = "img/rss.png" width = "25px">
 										</div>
+										<c:choose>
+											<c:when test = "${LoginUser.mem_no eq board.mem_no}">
+												<button class = "btn_delete">삭제</button>
+												<button class = "btn_like">수정</button>
+											</c:when>
+											<c:when test = "${LoginUser.mem_auth eq 1}">
+												<button class = "btn_delete">삭제</button>
+											</c:when>
+										</c:choose>
+									
 									</div>
 								</td> 
 							</tr>
@@ -122,7 +126,7 @@
 			</div>
 			</div>
 	<footer>
-		<%@ include file = "../footer.jsp" %>
+		<%@ include file = "../../footer.jsp" %>
 	</footer>
 </body>
 </html>

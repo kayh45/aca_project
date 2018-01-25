@@ -1,4 +1,4 @@
-package com.musicon.controller.action.review;
+package com.musicon.controller.action;
 
 import java.io.IOException;
 
@@ -7,17 +7,14 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.musicon.controller.action.Action;
-
-public class BoardWriteFormAction implements Action{
+public class MemberInfoAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/review/board_review_write.jsp";
+		String url = "member/member_info.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
-		
 	}
 
 }

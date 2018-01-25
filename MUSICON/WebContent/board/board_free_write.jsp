@@ -19,14 +19,7 @@
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<ul>
-						<li id = "title"><a href = "board.html">게시판목록</a></li>
-						<li><a href = "#">자유게시판</a></li>
-						<li><a href = "board_review.html">공연 리뷰</a></li>
-						<li><a href = "#">정보 공유</a></li>
-						<li><a href = "#">사진갤러리</a></li>
-						<li><a href = "#">영상갤러리</a></li>
-					</ul>
+					<%@ include file = "board_list.jsp" %>
 				</div>
 					<div id = "rsbox">
 						<form method = "post" action = "">

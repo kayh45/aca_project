@@ -24,6 +24,8 @@ public class BoardWriteAction implements Action{
 		BoardDAO bDao = BoardDAO.getInstance();
 		bDao.insertReview(bVo);
 		
+		new BoardListAction().execute(request, response);
+		
 	}
 
 }

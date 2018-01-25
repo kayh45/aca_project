@@ -10,26 +10,19 @@
 <link rel = "stylesheet" type = "text/css" href = "css/board.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>MUSICON :: 공연 리뷰 게시판</title>
 </head>
 <body>
 	<div class = "bgdiv">
 		<!-- 헤더 시작 -->
 		<header>
-			<%@ include file = "../header.jsp" %>
+			<%@ include file = "../../header.jsp" %>
 		</header>
 		<!-- 헤더 끝  -->
 		<!-- 컨텐츠 시작  -->
 		<div id = "content">
 			<div class = "menubar">
-				<ul>
-					<li id = "title"><a href = "board.html">게시판목록</a></li>
-					<li><a href = "#">자유게시판</a></li>
-					<li><a href = "#">공연 리뷰</a></li>
-					<li><a href = "#">정보 공유</a></li>
-					<li><a href = "#">사진갤러리</a></li>
-					<li><a href = "#">영상갤러리</a></li>
-				</ul>
+				<%@ include file = "../board_list.jsp" %>
 			</div>
 				<div id = "rsbox">
 					<p class = "big">공연 리뷰</p>
@@ -80,7 +73,11 @@
 					</c:forEach>						
 					</table>
 					<div id = "wrt_btns">
-						<input type = "button" value = "글쓰기" onclick = "location.href='board.do?command=review_write_form'">
+						<c:choose>
+							<c:when test = "${LoginUser != null}">
+							<input type = "button" value = "글쓰기" onclick = "location.href='board.do?command=review_write_form'">
+							</c:when>
+						</c:choose>
 					</div>
 					<div class = "pageno">
 						<nav>
@@ -104,12 +101,6 @@
 						</nav>
 						</div>
 						<div class = "boardsearch">
-							<select name="ddmenu">
-							    <option value="1">제목으로 검색</option>
-							    <option value="2">내용으로 검색</option>
-							    <option value="3">제목+내용으로 검색</option>
-							    <option value="4">작성자 이름으로 검색</option>
-							</select>
 							<input type = "text">
 							<input type = "submit" value = "검색">
 						</div>    		
@@ -118,7 +109,7 @@
 		</div>
 
 	<footer>
-		<%@ include file = "../footer.jsp" %>
+		<%@ include file = "../../footer.jsp" %>
 	</footer>
 </body>
 </html>

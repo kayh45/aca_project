@@ -15,11 +15,15 @@
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <link rel = "stylesheet" type = "text/css" href = "css/member.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Musicon :: 회원가입</title>
+<title>Musicon :: ${LoginUser.mem_nick}님의 회원정보</title>
 </head>
 <body>
-	<div class = "bgdiv">
-		<!-- 헤더 시작 -->
+
+<c:if test = "${LoginUser eq null}">
+	<% response.sendRedirect("main.do"); %>
+</c:if>
+<div class = "bgdiv">
+<!-- 헤더 시작 -->
 		<header>
 			<%@ include file = "../header.jsp" %>
 		</header>
@@ -27,57 +31,56 @@
 		<!-- 컨텐츠 시작  -->
 		<div id = "content">
 			<div class = "join_form">
-			<h2 id = "top_sub">회원가입</h2>
+			<h2 id = "top_sub">'${LoginUser.mem_nick}'님의 회원정보</h2>
 			<hr>
-			<form method = "post" action = "member.do?command=member_join">
-			
-				<table class = "join_table">
+			<form method = "post" action = "member.do?command=member_update_form">
+				<input type = "hidden" name = "mem_id" value = "${LoginUser.mem_id}">
+				<table class = "info_table">
+					<tr>
+						<td class = "lbl">회원번호</td>
+						<td class = "input">${LoginUser.mem_no}</td>
+					</tr>
 					<tr>
 						<td class = "lbl">아이디</td>
-						<td class = "input"><input type = "text" name = "mem_id"></td>
-						<td class = "must">*</td>
-						<td><input type = "button" class = "check_btn" onclick = "return idCheck()" value = "중복검사"></td>
+						<td class = "input">${LoginUser.mem_id}</td>
 					</tr>
 					<tr>
 						<td class = "lbl">닉네임</td>
-						<td class = "input"><input type = "text" name = "mem_nick"></td>
-						<td class = "must">*</td>
-						<td><input type = "button" class = "check_btn" onclick = "return nickCheck()" value = "중복검사"></td>
-					</tr>
-					<tr>
-						<td class = "lbl">비밀번호</td>
-						<td class = "input"><input type = "password" name = "mem_pw"></td>
-						<td class = "must">*</td>
-						<td></td>
-					</tr>	
-					<tr>
-						<td class = "lbl">비밀번호 확인</td>
-						<td class = "input"><input type = "password"></td>
-						<td class = "must">*</td>
-						<td>${message}</td>
+						<td class = "input">${LoginUser.mem_nick}</td>
 					</tr>
 					<tr>
 						<td class = "lbl">이름</td>
-						<td class = "input"><input type = "text" name = "mem_name"></td>
-						<td class = "must">*</td>
-						<td></td>
+						<td class = "input">${LoginUser.mem_name}</td>
 					</tr>
 					<tr>
 						<td class = "lbl">이메일</td>
-						<td class = "input"><input type = "text" name = "mem_mail"></td>
-						<td><input type = "hidden" name = "id_check"></td>
-						<td><input type = "hidden" name = "nick_check"></td>
+						<td class = "input">
+						<c:choose>
+						<c:when test = "${LoginUser.mem_mail eq null}">	
+							표시할 내용이 없습니다.					
+						</c:when>
+						<c:otherwise>
+							${LoginUser.mem_mail}
+						</c:otherwise>
+						</c:choose>
+						</td>
 					</tr>
 					<tr>
 						<td class = "lbl">연락처</td>
-						<td class = "input"><input type = "text" name = "mem_phone"></td>
-						<td></td>
-						<td></td>
-						
+						<td class = "input">
+						<c:choose>
+						<c:when test = "${LoginUser.mem_phone eq null}">	
+							표시할 내용이 없습니다.					
+						</c:when>
+						<c:otherwise>
+							${LoginUser.mem_phone}
+						</c:otherwise>
+						</c:choose>
+						</td>						
 					</tr>	
 					<tr class = "button_grp">
-						<td colspan = "4">							
-							<input type = "submit" value = "가입">
+						<td colspan = "2">							
+							<input type = "submit" value = "정보 수정">
 							<input type = "button" value = "뒤로가기" onclick = "javascript:history.go(-1)">
 						</td>
 					</tr>									

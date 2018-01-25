@@ -60,6 +60,12 @@ public class MemberVO {
    public void setMem_auth(int mem_auth) {
       this.mem_auth = mem_auth;
    }
+@Override
+public String toString() {
+	return "MemberVO [mem_no=" + mem_no + ", mem_name=" + mem_name + ", mem_id=" + mem_id + ", mem_pw=" + mem_pw
+			+ ", mem_nick=" + mem_nick + ", mem_mail=" + mem_mail + ", mem_phone=" + mem_phone + ", mem_auth="
+			+ mem_auth + "]";
+}
    
    
 

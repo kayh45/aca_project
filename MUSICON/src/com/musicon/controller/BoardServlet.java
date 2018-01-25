@@ -1,6 +1,8 @@
 package com.musicon.controller;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,12 +32,20 @@ public class BoardServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		System.out.println("BoardServlet에서 요청을 받음을 확인 : " + command);
+		if (command != null){
 		
 		ActionFactory af = ActionFactory.getInstance();
 		Action action = af.getAction(command);
 		
 		if(action != null){
 			action.execute(request, response);
+		}
+				
+		} else {
+			String url = "board/board_main.jsp";
+			
+			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);
 		}
 	}
 

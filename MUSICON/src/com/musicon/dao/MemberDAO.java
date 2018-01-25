@@ -138,7 +138,7 @@ public class MemberDAO {
 	public void updateMember(MemberVO mVo) {
 		
 		String sql = "update member set mem_name = ?, mem_pw = ?, mem_nick = ?, "
-				+ "mem_phone = ?, mem_mail = ? where mem_no = ?";
+				+ "mem_phone = ?, mem_mail = ? where mem_id = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -152,7 +152,9 @@ public class MemberDAO {
 			pstmt.setString(3, mVo.getMem_nick());
 			pstmt.setString(4, mVo.getMem_phone());
 			pstmt.setString(5, mVo.getMem_mail());
-			pstmt.setInt(6, mVo.getMem_no());
+			pstmt.setString(6, mVo.getMem_id());
+			
+			System.out.println(mVo);
 			
 			pstmt.executeUpdate();
 			

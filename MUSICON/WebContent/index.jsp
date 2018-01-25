@@ -68,17 +68,17 @@
 					<hr class = "graybg">
 					<table class = "logintable">					
 					<tr>
-						<td>관리자</td>				
+						<td class = "memdiv">관리자</td>				
 						<td/>						
 					</tr>
 					<tr>
-						<td>${LoginUser.mem_nick}(${LoginUser.mem_id})님 반갑습니다.</td>
+						<td class = "reception">${LoginUser.mem_nick}(${LoginUser.mem_id})님 반갑습니다.</td>
 						<td/>		
 					</tr>
 					<tr>
 						<td class = "btn_grp">
-						<input type = "button" value = "로그아웃" onclick = "location.href = 'member.do?command=member_logout'">
-						<input type = "button" value = "내 정보보기">
+						<input id = "logout" type = "button" value = "로그아웃" onclick = "location.href = 'member.do?command=member_logout'">
+						<input type = "button" value = "내 정보보기" onclick = "location.href = 'member.do?command=member_info'">
 						<input type = "button" value = "회원관리"></td>
 						<td/>				
 					</tr>													
@@ -89,17 +89,17 @@
 					<hr class = "graybg">
 					<table class = "logintable">
 					<tr>
-						<td>일반회원</td>				
+						<td class = "memdiv">일반회원</td>				
 						<td></td>				
 					</tr>
 					<tr>
-						<td>${LoginUser.mem_nick}(${LoginUser.mem_id})님 반갑습니다.</td>
+						<td class = "reception">${LoginUser.mem_nick}(${LoginUser.mem_id})님 반갑습니다.</td>
 						<td></td>				
 					</tr>
 					<tr>
 						<td class = "btn_grp">
-						<input type = "button" value = "로그아웃" onclick = "location.href = 'member.do?command=member_logout'">
-						<input type = "button" value = "내 정보보기"></td>
+						<input id = "logout" type = "button" value = "로그아웃" onclick = "location.href = 'member.do?command=member_logout'">
+						<input type = "button" value = "내 정보보기" onclick = "location.href = 'member.do?command=member_info'"></td>
 						<td/>				
 					</tr>													
 				</table>

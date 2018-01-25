@@ -15,7 +15,7 @@
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <link rel = "stylesheet" type = "text/css" href = "css/member.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Musicon :: 회원가입</title>
+<title>Musicon :: 회원정보수정</title>
 </head>
 <body>
 	<div class = "bgdiv">
@@ -27,20 +27,20 @@
 		<!-- 컨텐츠 시작  -->
 		<div id = "content">
 			<div class = "join_form">
-			<h2 id = "top_sub">회원가입</h2>
+			<h2 id = "top_sub">회원 정보 수정</h2>
 			<hr>
-			<form method = "post" action = "member.do?command=member_join">
+			<form method = "post" action = "member.do?command=member_update">
 			
 				<table class = "join_table">
 					<tr>
 						<td class = "lbl">아이디</td>
-						<td class = "input"><input type = "text" name = "mem_id"></td>
-						<td class = "must">*</td>
-						<td><input type = "button" class = "check_btn" onclick = "return idCheck()" value = "중복검사"></td>
+						<td class = "input"><input type = "text" name = "mem_id" disabled = "true" value = "${member.mem_id}"></td>
+						<td><input type = "hidden" name = "mem_id" value = "${member.mem_id}"> </td>
+						<td/>
 					</tr>
 					<tr>
 						<td class = "lbl">닉네임</td>
-						<td class = "input"><input type = "text" name = "mem_nick"></td>
+						<td class = "input"><input type = "text" name = "mem_nick" value = "${member.mem_nick}"></td>
 						<td class = "must">*</td>
 						<td><input type = "button" class = "check_btn" onclick = "return nickCheck()" value = "중복검사"></td>
 					</tr>
@@ -58,26 +58,26 @@
 					</tr>
 					<tr>
 						<td class = "lbl">이름</td>
-						<td class = "input"><input type = "text" name = "mem_name"></td>
+						<td class = "input"><input type = "text" name = "mem_name" value = "${member.mem_name}"></td>
 						<td class = "must">*</td>
 						<td></td>
 					</tr>
 					<tr>
 						<td class = "lbl">이메일</td>
-						<td class = "input"><input type = "text" name = "mem_mail"></td>
+						<td class = "input"><input type = "text" name = "mem_mail" value = "${member.mem_mail}"></td>
 						<td><input type = "hidden" name = "id_check"></td>
 						<td><input type = "hidden" name = "nick_check"></td>
 					</tr>
 					<tr>
 						<td class = "lbl">연락처</td>
-						<td class = "input"><input type = "text" name = "mem_phone"></td>
+						<td class = "input"><input type = "text" name = "mem_phone" value = "${member.mem_phone}"></td>
 						<td></td>
 						<td></td>
 						
 					</tr>	
 					<tr class = "button_grp">
 						<td colspan = "4">							
-							<input type = "submit" value = "가입">
+							<input type = "submit" value = "확인">
 							<input type = "button" value = "뒤로가기" onclick = "javascript:history.go(-1)">
 						</td>
 					</tr>									

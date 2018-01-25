@@ -17,7 +17,7 @@ public class BoardViewAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/board_review_detail.jsp";
+		String url = "/board/review/board_review_detail.jsp";
 		
 		String brd_no = request.getParameter("brd_no");
 		
