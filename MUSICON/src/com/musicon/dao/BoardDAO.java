@@ -57,7 +57,6 @@ public class BoardDAO {
 				bVo.setPfm_div(rs.getString("pfm_div"));
 				bVo.setMem_nick(rs.getString("mem_nick"));
 				
-				System.out.println(sql);
 				
 				list.add(bVo);
 			}

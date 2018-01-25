@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -34,51 +36,76 @@
 				</script>
 			</div>
 			<div class = "maincont">
-				<div id = "best_con" class = "boxitem">
-					<p class = "t_title">
-						<img src = "img/crown.png" width = "20px" height = "20px" class = "t_img">
-						BEST 공연
-					</p>
-					<table>
-						<tr>
-						<td>
-						<div class = "tick_img" style = "background-image : url('img/ticket_bb.png');">
-							<div class = "img_info">★ BIGBANG</div>				
-						</div>
-						</td>
-						<td>
-						<div class = "tick_txt" style = "background-image : url('img/ticket_r.png');">
-							<p class = "txt_info"><b>빅뱅 연말 콘서트</b></p>
-							<a href = "#">
-							<img src = "img/more.png" width = "100px" class = "moreimg">
-							</a>
-							<p class = "txt_bottom">이 공연의 좋아요 개수: 123개</p>	
-						</div>
-						</td>
-						</tr>
-					</table>
-						<p class = "t_title">
-						<img src = "img/reco.png" width = "23px" height = "20px" class = "t_img">
-						추천 공연
-					</p>
-					<table>
-						<tr>
-						<td>
-						<div class = "tick_img" style = "background-image : url('img/ticket_ab.png');">
-							<div class = "img_info">★ INDIE</div>				
-						</div>
-						</td>
-						<td>
-						<div class = "tick_txt" style = "background-image : url('img/ticket_r.png');">
-							<p class = "txt_info"><b>안녕바다 연말 공연</b></p>
-							<a href = "search/detailInfo.html">
-							<img src = "img/more.png" width = "100px" class = "moreimg">
-							</a>
-							<p class = "txt_bottom">회원님의 관심사: 안녕바다</p>	
-						</div>
-						</td>
-						</tr>
-					</table>
+				<div class = "boxitem">				
+				<c:choose>
+				<c:when test = "${LoginUser==null}">
+				<h4>로그인</h4>
+				<hr class = "graybg">
+				<form method = "post" action = "member.do?command=member_login">
+				<table class = "logintable">
+					<tr>
+						<td class = "lbl">아이디</td>
+						<td class = "inpt"><input type = "text" name = "mem_id"></td>				
+					</tr>
+					<tr>
+						<td class = "lbl">비밀번호</td>
+						<td class = "inpt"><input type = "password" name = "mem_pw"></td>				
+					</tr>
+					<tr>
+						<td class = "btn_grp" colspan = "2">
+						<input type = "submit" value = "로그인">
+						<input type = "button" value = "회원가입" onclick = "location.href='board.do?command=member_join_form'">
+						</td>			
+					</tr>
+					<tr>
+						<td colspan = "2">${message}</td>
+					</tr>													
+				</table>
+				</form>	
+				</c:when>
+				<c:when test = "${LoginUser.mem_auth==1}">
+					<h4>WELCOME</h4>
+					<hr class = "graybg">
+					<table class = "logintable">					
+					<tr>
+						<td>관리자</td>				
+						<td/>						
+					</tr>
+					<tr>
+						<td>${LoginUser.mem_nick}(${LoginUser.mem_id})님 반갑습니다.</td>
+						<td/>		
+					</tr>
+					<tr>
+						<td class = "btn_grp">
+						<input type = "button" value = "로그아웃" onclick = "location.href = 'member.do?command=member_logout'">
+						<input type = "button" value = "내 정보보기">
+						<input type = "button" value = "회원관리"></td>
+						<td/>				
+					</tr>													
+				</table>
+				</c:when>
+				<c:otherwise>
+					<h4>WELCOME</h4>
+					<hr class = "graybg">
+					<table class = "logintable">
+					<tr>
+						<td>일반회원</td>				
+						<td></td>				
+					</tr>
+					<tr>
+						<td>${LoginUser.mem_nick}(${LoginUser.mem_id})님 반갑습니다.</td>
+						<td></td>				
+					</tr>
+					<tr>
+						<td class = "btn_grp">
+						<input type = "button" value = "로그아웃" onclick = "location.href = 'member.do?command=member_logout'">
+						<input type = "button" value = "내 정보보기"></td>
+						<td/>				
+					</tr>													
+				</table>
+				</c:otherwise>
+				</c:choose>
+				
 				</div>
 				<div id = "notice">
 					<div id = "topbox" class = "inner">

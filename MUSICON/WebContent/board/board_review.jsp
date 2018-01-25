@@ -13,10 +13,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header>
-		<%@ include file = "../header.jsp" %>
-	</header>
-	
 	<div class = "bgdiv">
 		<!-- 헤더 시작 -->
 		<header>

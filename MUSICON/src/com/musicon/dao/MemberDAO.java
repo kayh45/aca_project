@@ -21,7 +21,7 @@ public class MemberDAO {
 	public void joinMember(MemberVO mVo) {
 		
 		String sql = "insert into member(mem_no, mem_name, mem_id, mem_pw, mem_nick, mem_phone, "
-				+ "mem_mail values(mem_seq, ?, ?, ?, ?, ?, ?)";
+				+ "mem_mail) values(mem_seq.nextval, ?, ?, ?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -36,7 +36,7 @@ public class MemberDAO {
 			pstmt.setString(4, mVo.getMem_nick());
 			pstmt.setString(5, mVo.getMem_phone());
 			pstmt.setString(6, mVo.getMem_mail());
-			
+						
 			pstmt.executeUpdate();
 			
 		}catch(SQLException e) {
@@ -91,7 +91,7 @@ public class MemberDAO {
 		
 		MemberVO mVo = null;
 		
-		String sql = "select * from member where = ?";
+		String sql = "select * from member where mem_id = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -102,6 +102,8 @@ public class MemberDAO {
 			pstmt = conn.prepareStatement(sql);
 			
 			pstmt.setString(1, mem_id);
+			
+			System.out.println(mem_id);
 			
 			rs = pstmt.executeQuery();
 			
@@ -115,6 +117,7 @@ public class MemberDAO {
 				mVo.setMem_nick(rs.getString("mem_nick"));
 				mVo.setMem_mail(rs.getString("mem_mail"));
 				mVo.setMem_phone(rs.getString("mem_phone"));
+				mVo.setMem_auth(rs.getInt("mem_auth"));
 				
 			}
 			

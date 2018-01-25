@@ -74,7 +74,10 @@
 	.boxitem {
 		width : 600px;
 		margin : 0 20px;
-		padding-left : 10px
+		padding-left : 10px;
+		background-color : #f1f1f1;
+		padding : 20px;
+		border : dotted 2px #d4d4d4
 	}
 	.t_title {
 		font-size : 18px;
@@ -145,4 +148,47 @@
 	
 	.top a:hover {
 		color : black;
+	}
+	
+	.graybg {
+		border : solid 1px #8e8e8e;
+		margin-top : 5px;
+	
+	}
+	
+	.logintable {
+		margin : 10px;
+		width : 100%;
+	}
+	
+	.lbl {
+		text-align : center;	
+		padding : 8px 10px;
+		font-size : 18px;
+		font-family : 'Tahoma';
+		font-weight : bold;
+	}
+	
+	.logintable input[type = submit] ,
+	.logintable input[type = button] {
+		border : none;
+		background-color : #6f96b9;
+		width : 100px;
+		height : 40px;
+		font-size : 16px;
+		font-weight : bold;
+		margin-left : 10px;
+		color : white;
+		font-family : '맑은 고딕', 'Tahoma', 'sans-serif';	
+	}
+	
+	.logintable input[type = submit] {
+		background-color : #03ad7a;
+	}
+	
+	.btn_grp {
+	
+		padding-top : 20px;
+		text-align : center;
+	
 	}

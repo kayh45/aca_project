@@ -37,9 +37,8 @@ public class MemberLoginAction implements Action{
 				
 				System.out.println("로그인 성공");
 
-				MemberVO tempMVO = mDao.getMemberInfo("mem_id");
-				
-				
+				MemberVO tempMVO = mDao.getMemberInfo(request.getParameter("mem_id"));
+								
 				session.setAttribute("LoginUser", tempMVO);
 			}else if(mDao.userCheck(mVo) == 0){
 				

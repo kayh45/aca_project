@@ -1,0 +1,65 @@
+.join_form {
+	padding: 10px 15px;
+	width: 750px;
+	background-color: white;
+	border: solid 1px #98cffc;
+	margin: 10px auto;
+}
+
+.join_table {
+	width: 90%;
+	margin: 20px;
+}
+
+.join_table td {
+	padding-top: 40px;
+	padding : 10px;
+}
+
+.input {
+	width: 20%;
+}
+
+.must {
+	text-align: center;
+	color: red;
+	font-size: 20px;
+	width: 5%;
+}
+
+.button_grp {
+	text-align: center;
+}
+
+.join_table .lbl {
+	text-align: right;
+}
+
+.join_table input[type=text], .join_table input[type=password] {
+	height: 30px;
+	padding: 5px;
+	font-size: 17px;
+}
+
+#top_sub {
+	margin-left: 20px;
+}
+
+.check_btn {
+	border: none;
+	width: 80px;
+	height: 30px;
+	background-color: #a0d5dc;
+}
+
+.button_grp input {
+	border: none;
+	width: 80px;
+	height: 30px;
+	background-color: #a0d5dc;
+}
+
+.button_grp td {
+	border-top: solid 1px #a8a8a8;
+	padding: 20px;
+}
