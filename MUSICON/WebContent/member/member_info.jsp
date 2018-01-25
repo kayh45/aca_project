@@ -33,8 +33,9 @@
 			<div class = "join_form">
 			<h2 id = "top_sub">'${LoginUser.mem_nick}'님의 회원정보</h2>
 			<hr>
-			<form method = "post" action = "member.do?command=member_update_form">
+			<form method = "post" action = "member.do?">
 				<input type = "hidden" name = "mem_id" value = "${LoginUser.mem_id}">
+				<input type = "hidden" name = "command" value = "member_update_form">
 				<table class = "info_table">
 					<tr>
 						<td class = "lbl">회원번호</td>
@@ -81,7 +82,7 @@
 					<tr class = "button_grp">
 						<td colspan = "2">							
 							<input type = "submit" value = "정보 수정">
-							<input type = "button" value = "뒤로가기" onclick = "javascript:history.go(-1)">
+							<input type = "button" value = "뒤로가기" onclick = "location.href='main.do'">
 						</td>
 					</tr>									
 				</table>			

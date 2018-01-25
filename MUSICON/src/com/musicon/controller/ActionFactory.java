@@ -8,6 +8,10 @@ import com.musicon.controller.action.MemberLoginAction;
 import com.musicon.controller.action.MemberLogoutAction;
 import com.musicon.controller.action.MemberUpdateAction;
 import com.musicon.controller.action.MemberUpdateFormAction;
+import com.musicon.controller.action.PerformanceListAction;
+import com.musicon.controller.action.PerformanceViewAction;
+import com.musicon.controller.action.PerformanceWriteAction;
+import com.musicon.controller.action.PerformanceWriteFormAction;
 import com.musicon.controller.action.brpl.BrplWriteAction;
 import com.musicon.controller.action.review.BoardDeleteAction;
 import com.musicon.controller.action.review.BoardListAction;
@@ -66,6 +70,14 @@ public class ActionFactory {
 			action = new MemberUpdateFormAction();
 		} else if (command.equals("member_update")){
 			action = new MemberUpdateAction();
+		} else if (command.equals("performance_write_form")){
+			action = new PerformanceWriteFormAction();
+		} else if (command.equals("performance_write")){
+			action = new PerformanceWriteAction();
+		} else if (command.equals("performance_view")){
+			action = new PerformanceViewAction();
+		} else if (command.equals("performance_list")){
+			action = new PerformanceListAction();
 		}
 		
 		return action;

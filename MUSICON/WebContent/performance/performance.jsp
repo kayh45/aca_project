@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,7 +9,7 @@
 <link rel = "stylesheet" type = "text/css" href = "css/search.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>MUSICON :: 공연 검색</title>
 </head>
 <body>
 
@@ -33,6 +35,8 @@
 				<label for = "tab-gn-5">국악</label>
 				<input type = "radio" name = "genre" id = "tab-gn-6">
 				<label for = "tab-gn-6">연극</label>
+				<input type = "radio" name = "genre" id = "tab-gn-7">
+				<label for = "tab-gn-7">무용</label>
 			</div> 
 			<div id = "keywordbar">
 				<table>
@@ -40,51 +44,16 @@
 					<td class = "kwtitle">인기 키워드</td>
 					<td class = "kwcontent">
 					<div class = "chkgroup">
+						<c:if test = "${keywordList != null}">
+						<c:forEach var = "key" items = "${keywordList}">
+						<c:set var = "index" value = "${index+1}"/>
 						<input type = "checkbox" name = "topkw" id = "top-kw-1">
-						<label for = "top-kw-1">연말</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-2">
-						<label for = "top-kw-2">빅뱅</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-3">
-						<label for = "top-kw-3">NELL</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-4">
-						<label for = "top-kw-4">워너원</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-5">
-						<label for = "top-kw-5">크리스마스</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-6">
-						<label for = "top-kw-6">싸이</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-7">
-						<label for = "top-kw-7">비투비</label><br>
-						<input type = "checkbox" name = "topkw" id = "top-kw-8">
-						<label for = "top-kw-8">내한공연</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-9">
-						<label for = "top-kw-9">컬투</label>
-						<input type = "checkbox" name = "topkw" id = "top-kw-10">
-						<label for = "top-kw-10">다비치</label>
+						<label for = "top-kw-${index}">${key}</label>
+						</c:forEach>
+						</c:if>
 					</div>
 					</td>
-					</tr>
-					<tr>
-					<td class = "kwtitle">장르</td>
-					<td class = "kwcontent">						
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-1">
-						<label for = "genre-kw-1">발라드</label>
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-2">
-						<label for = "genre-kw-2">락/메탈</label>
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-3">
-						<label for = "genre-kw-3">랩/힙합</label>
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-4">
-						<label for = "genre-kw-4">재즈/소울</label>
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-5">
-						<label for = "genre-kw-5">인디</label><br>
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-6">
-						<label for = "genre-kw-6">토크</label>
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-7">
-						<label for = "genre-kw-7">페스티벌</label>
-						<input type = "checkbox" name = "genrekw" id = "genre-kw-8">
-						<label for = "genre-kw-8">디너쇼</label>
-						
-					</td>
-					</tr>
+					</tr>		
 					<tr>
 					<td class = "kwtitle">지역</td>
 					<td class = "kwcontent">
@@ -112,15 +81,6 @@
 						<label for = "location-kw-11">경북</label>
 					</td>
 					</tr>
-					<tr>
-					<td class = "kwtitle">기타</td>
-					<td class = "kwcontent">
-						<input type = "checkbox" name = "etckw" id = "etc-kw-1">
-						<label for = "etc-kw-1">스탠딩</label>
-						<input type = "checkbox" name = "etckw" id = "etc-kw-2">
-						<label for = "etc-kw-2">좌석</label>
-					</td>
-					</tr>
 				</table>
 			</div>
 				<div id = "searchbar">
@@ -130,9 +90,9 @@
 			</form>
 			<div class = "result">
 				<div class = "option">
-					<a href ="#">지난공연포함</a> | 
-					<a href ="#">1주 이내</a> | 
-					<a href ="#">1달 이내</a>
+					<c:if test = "${LoginUser.mem_auth eq 1}">
+					<input type = "button" value = "공연 등록" onclick = "location.href='perform.do?command=performance_write_form'">
+					</c:if>
 				</div>
 				<div id = "rsbox">
 					<table>
@@ -143,76 +103,23 @@
 							<td>장소</td>
 							<td>기간</td>
 						</tr>
+						<c:forEach var = "performance" items = "${performanceList}">
 						<tr>
-							<td class = "category">콘서트/인디/서울</td>
-							<td class = "picture"><img src = "img/abposter.jpg"></td>
-							<td class = "subject"><a href = "perform.do?command=p_detail">안녕바다 연말 공연 〈snow waltz〉</a></td>
-							<td class = "location">홍대 롤링홀</td>
-							<td class = "date">2017.12.30 ~ 2017.12.31</td>
+							<td class = "category">${performance.pfm_div}/${performance.pfm_reg}/${performance.pfm_keywords}</td>
+							<td class = "picture"><img src = "${performance.pfm_pic}"></td>
+							<td class = "subject"><a href = "perform.do?command=performance_view&pfm_no=${performance.pfm_no}">${performance.pfm_subject}</a></td>
+							<td class = "location">${performance.pfm_loc}</td>
+							<td class = "date">
+							<fmt:parseDate var="startDate" value = "${performance.pfm_start}" pattern = "yyyy-MM-dd HH:mm:ss"/>
+							<fmt:parseDate var="endDate" value = "${performance.pfm_end}" pattern = "yyyy-MM-dd HH:mm:ss"/>
+							<fmt:formatDate value = "${startDate}" type = "date"/>
+							<c:if test = "${performance.pfm_start eq performance.pfm_end}">
+							<fmt:formatDate value = "${endDate}" type = "date"/>
+							</c:if>
+							</td>
 						</tr>
-						<tr>
-							<td class = "category">콘서트/BTS/서울</td>
-							<td class = "picture"><img src = "img/btsposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">방탄소년단 연말 콘서트</a></td>
-							<td class = "location">고척 스카이돔</td>
-							<td class = "date">2018.01.13 ~ 2018.01.14</td>
-						</tr>
-						<tr>
-							<td class = "category">콘서트/발라드</td>
-							<td class = "picture"><img src = "img/pjhposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">박정현 연말 콘서트〈LET IT SNOW〉</a></td>
-							<td class = "location">올림픽핸드볼장</td>
-							<td class = "date">2017.12.22 ~ 2017.12.25</td>
-						</tr>
-						<tr>
-							<td class = "category">콘서트/인디/서울</td>
-							<td class = "picture"><img src = "img/gkposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">국카스텐 연말 투어［HAPPENING］</a></td>
-							<td class = "location">잠실실내체육관</td>
-							<td class = "date">2017.12.24 ~ 2017.12.25</td>
-						</tr>
-						<tr>
-							<td class = "category">연극/창작/서울</td>
-							<td class = "picture"><img src = "img/oktposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">6년 연속 1위 연극〈옥탑방고양이〉</a></td>
-							<td class = "location">탄탄홀</td>
-							<td class = "date">2017.10.30 ~ 2017.12.28</td>
-						</tr>
-						<tr>
-							<td class = "category">콘서트/빅뱅/서울</td>
-							<td class = "picture"><img src = "img/bbposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">빅뱅 연말 콘서트</a></td>
-							<td class = "location">고척 스카이돔</td>
-							<td class = "date">2017.12.30 ~ 2017.12.31</td>
-						</tr>
-						<tr>
-							<td class = "category">뮤지컬/내한/서울</td>
-							<td class = "picture"><img src = "img/ctsposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">캣츠 내한공연 앙코르</a></td>
-							<td class = "location">세종문화회관대극장</td>
-							<td class = "date">2017.12.30 ~ 2017.12.31</td>
-						</tr>
-						<tr>
-							<td class = "category">콘서트/연말/서울</td>
-							<td class = "picture"><img src = "img/kywposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">김연우 연말 콘서트 〈오마이갓연우〉</a></td>
-							<td class = "location">올림픽공원홀</td>
-							<td class = "date">2017.12.22 ~ 2017.12.25</td>
-						</tr>
-						<tr>
-							<td class = "category">콘서트/이적/서울</td>
-							<td class = "picture"><img src = "img/ljposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">이적 콘서트 〈멋진 겨울날〉</a></td>
-							<td class = "location">코엑스 Hall D</td>
-							<td class = "date">2017.12.30 ~ 2017.12.31</td>
-						</tr>
-						<tr>
-							<td class = "category">콘서트/토크/서울</td>
-							<td class = "picture"><img src = "img/kjdposter.jpg"></td>
-							<td class = "subject"><a href = "detailInfo.html">김제동 토크콘서트 노브레이크 시즌8</a></td>
-							<td class = "location">고척 스카이돔</td>
-							<td class = "date">2018.01.04 ~ 2018.02.04</td>
-						</tr>
+						</c:forEach>
+						
 					</table>
 					<div class = "pageno">
 						<nav>

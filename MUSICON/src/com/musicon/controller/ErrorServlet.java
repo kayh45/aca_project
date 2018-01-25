@@ -9,19 +9,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.musicon.controller.action.Action;
-
 /**
- * Servlet implementation class PerformanceServlet
+ * Servlet implementation class ErrorServlet
  */
-@WebServlet("/perform.do")
-public class PerformanceServlet extends HttpServlet {
+@WebServlet("/errorpage")
+public class ErrorServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PerformanceServlet() {
+    public ErrorServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -30,32 +28,17 @@ public class PerformanceServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String url = "error.jsp";
 		
-		
-		String command = request.getParameter("command");
-		
-		if(command != null) {
-			ActionFactory af = ActionFactory.getInstance();
-			Action action = af.getAction(command);
-			
-			if(action != null) {
-				action.execute(request, response);
-			}
-		}else {
-			String url = "perform.do?command=performance_list";
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-			dispatcher.forward(request, response);
-		}
-		
-		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+		dispatcher.forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
+		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

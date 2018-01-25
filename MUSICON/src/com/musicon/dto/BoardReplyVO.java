@@ -1,6 +1,6 @@
 package com.musicon.dto;
 
-public class BoardReplyVO {
+public class BoardReplyVO extends MemberVO{
 	/*CREATE TABLE board_reply(
 			 brpl_no               NUMBER(10)  PRIMARY KEY ,
 			 brd_no                NUMBER(10) NOT NULL REFERENCES BOARD(brd_no),

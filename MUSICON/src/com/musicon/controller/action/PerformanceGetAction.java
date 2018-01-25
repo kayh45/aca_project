@@ -16,10 +16,10 @@ public class PerformanceGetAction implements Action {
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 
-		String url = "test2.jsp";
+		String url = "Performance/performance_detail.jsp";
 
 		PerformanceDAO pDao = PerformanceDAO.getInstance();
-		PerformanceVO pVo = pDao.getPerformance(11);
+		PerformanceVO pVo = pDao.selectPerformance(request.getParameter("pfm_no"));
 		request.setAttribute("Performance", pVo);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
