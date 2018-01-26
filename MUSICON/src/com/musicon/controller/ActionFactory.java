@@ -1,6 +1,7 @@
 package com.musicon.controller;
 
 import com.musicon.controller.action.Action;
+import com.musicon.controller.action.MemberIdCheckAction;
 import com.musicon.controller.action.MemberInfoAction;
 import com.musicon.controller.action.MemberJoinAction;
 import com.musicon.controller.action.MemberJoinFormAction;
@@ -72,6 +73,8 @@ public class ActionFactory {
 			action = new MemberUpdateFormAction();
 		} else if (command.equals("member_update")){
 			action = new MemberUpdateAction();
+		} else if (command.equals("member_id_check")){
+			action = new MemberIdCheckAction();
 		} else if (command.equals("performance_write_form")){
 			action = new PerformanceWriteFormAction();
 		} else if (command.equals("performance_write")){
