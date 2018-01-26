@@ -144,6 +144,7 @@ public class BoardDAO {
 				bVo.setPfm_div(rs.getString("pfm_div"));
 				bVo.setPfm_subject(rs.getString("pfm_subject"));
 				bVo.setPfm_loc(rs.getString("pfm_loc"));
+				bVo.setPfm_pic(rs.getString("pfm_pic"));
 				bVo.setPfm_start(rs.getString("pfm_start"));
 				bVo.setPfm_actor(rs.getString("pfm_actor"));
 			}

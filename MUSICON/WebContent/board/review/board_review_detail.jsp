@@ -34,7 +34,7 @@
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "info">
-										<img src = "img/abposter.jpg" width = "100px">
+										<img src = "${board.pfm_pic}" width = "100px">
 									</div>
 									<div class = "info">
 										<p>공연명: ${board.pfm_subject}</p>
@@ -45,7 +45,11 @@
 										<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
 									</div>
 									<div class = "info" id = "info_btn">
-										<button class = "new_wdw" onclick="window.open('search/detailInfo.html')">새 창에서 보기</button>
+									<form method = "post" action = "perform.do">
+									<input type = "hidden" name = "command" value = "performance_view">
+									<input type = "hidden" name = "pfm_no" value = "${board.pfm_no}">
+										<button type = "submit" class = "new_wdw">새 창에서 보기</button>
+									</form>
 									</div>
 								</td>
 							</tr>
