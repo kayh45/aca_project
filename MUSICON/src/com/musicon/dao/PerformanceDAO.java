@@ -6,7 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.musicon.dto.PerformKeywordVO;
 import com.musicon.dto.PerformanceVO;
@@ -86,6 +88,25 @@ public class PerformanceDAO {
 		return pVo;
 	}
 
+	
+	public String getKeyword(int pfm_no) {	
+		PerformKeywordDAO pkDao = PerformKeywordDAO.getInstance();
+		List<String> keywordList = pkDao .getKeywordName(pfm_no);
+		String words = "";
+		int i = 0;
+		for(String word:keywordList) {					
+			if(i > 0){
+				words += ("/" + word);
+			}else {
+				words += word;
+				i++;
+			}
+		}
+		return words;
+	}
+	
+	
+	
 	public List<PerformanceVO> selectAllPerformance() {
 		String sql = "select * from performance order by pfm_no desc";
 		
@@ -115,20 +136,7 @@ public class PerformanceDAO {
 				pVo.setPfm_div(rs.getString("pfm_div"));
 				pVo.setPfm_reg(rs.getString("pfm_reg"));
 				pVo.setPfm_pic(rs.getString("pfm_pic"));
-
-				List<String> keywordList = pkDao.getKeywordName(rs.getInt("pfm_no"));
-				String words = "";
-				int i = 0;
-				for(String word:keywordList) {					
-					if(i > 0){
-						words += ("/" + word);
-					}else {
-						words += word;
-						i++;
-					}
-				}
-				System.out.println(words);
-				pVo.setPfm_keywords(words);
+				pVo.setPfm_keywords(getKeyword(rs.getInt("pfm_no")));
 				
 				list.add(pVo);
 			}
@@ -263,5 +271,178 @@ public class PerformanceDAO {
 		
 		return 0;		
 	}
+	
+	public Set<String> searchBySubject(String search){
+		
+		String sql = "select pfm_no from performance where pfm_subject like '%" + search + "%'";
+
+		Set<String> list = new HashSet<String>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		System.out.println(search);
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+							
+				list.add(rs.getString("pfm_no"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	
+	public Set<String> searchByReg(String pfm_reg){
+		
+		String sql = "select pfm_no from performance where pfm_reg = '" + pfm_reg + "'";
+
+		Set<String> list = new HashSet<String>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		System.out.println(pfm_reg);
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+							
+				list.add(rs.getString("pfm_no"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	
+public PerformanceVO searchByAll(String pfm_no, String pfm_div){
+		
+		String sql = "select * from performance where pfm_no = '" + pfm_no + "' and pfm_div = '" + pfm_div + "'";
+
+		PerformanceVO pVo = new PerformanceVO();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while (rs.next()){
+				
+				pVo.setPfm_no(rs.getInt("pfm_no"));
+				pVo.setPfm_subject(rs.getString("pfm_subject"));
+				pVo.setPfm_actor(rs.getString("pfm_actor"));
+				pVo.setPfm_start(rs.getString("pfm_start"));
+				pVo.setPfm_end(rs.getString("pfm_end"));
+				pVo.setPfm_loc(rs.getString("pfm_loc"));
+				pVo.setPfm_content(rs.getString("pfm_content"));
+				pVo.setPfm_div(rs.getString("pfm_div"));
+				pVo.setPfm_reg(rs.getString("pfm_reg"));
+				pVo.setPfm_pic(rs.getString("pfm_pic"));
+				pVo.setPfm_keywords(getKeyword(rs.getInt("pfm_no")));
+				
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return pVo;
+	}
+
+public PerformanceVO searchByDiv(String pfm_div){
+	
+	String sql = "select * from performance where pfm_div = '" + pfm_div + "'";
+
+	PerformanceVO pVo = new PerformanceVO();
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+
+	try {
+		conn = DBManager.getConnection();
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		while (rs.next()){
+			
+			pVo.setPfm_no(rs.getInt("pfm_no"));
+			pVo.setPfm_subject(rs.getString("pfm_subject"));
+			pVo.setPfm_actor(rs.getString("pfm_actor"));
+			pVo.setPfm_start(rs.getString("pfm_start"));
+			pVo.setPfm_end(rs.getString("pfm_end"));
+			pVo.setPfm_loc(rs.getString("pfm_loc"));
+			pVo.setPfm_content(rs.getString("pfm_content"));
+			pVo.setPfm_div(rs.getString("pfm_div"));
+			pVo.setPfm_reg(rs.getString("pfm_reg"));
+			pVo.setPfm_pic(rs.getString("pfm_pic"));
+			pVo.setPfm_keywords(getKeyword(rs.getInt("pfm_no")));
+			
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		DBManager.close(conn, stmt, rs);
+	}
+	return pVo;
+}
+
+public PerformanceVO searchByAll(String pfm_no){
+	
+	String sql = "select * from performance where pfm_no = '" + pfm_no + "'";
+
+	PerformanceVO pVo = new PerformanceVO();
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+
+	try {
+		conn = DBManager.getConnection();
+		stmt = conn.createStatement();
+		rs = stmt.executeQuery(sql);
+		
+		while (rs.next()){
+			
+			pVo.setPfm_no(rs.getInt("pfm_no"));
+			pVo.setPfm_subject(rs.getString("pfm_subject"));
+			pVo.setPfm_actor(rs.getString("pfm_actor"));
+			pVo.setPfm_start(rs.getString("pfm_start"));
+			pVo.setPfm_end(rs.getString("pfm_end"));
+			pVo.setPfm_loc(rs.getString("pfm_loc"));
+			pVo.setPfm_content(rs.getString("pfm_content"));
+			pVo.setPfm_div(rs.getString("pfm_div"));
+			pVo.setPfm_reg(rs.getString("pfm_reg"));
+			pVo.setPfm_pic(rs.getString("pfm_pic"));
+			pVo.setPfm_keywords(getKeyword(rs.getInt("pfm_no")));
+			
+		}
+		
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		DBManager.close(conn, stmt, rs);
+	}
+	return pVo;
+}
+
+
 	
 }

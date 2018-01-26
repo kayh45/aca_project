@@ -52,8 +52,8 @@
 										<fmt:parseDate var="startDate" value = "${performance.pfm_start}" pattern = "yyyy-MM-dd HH:mm:ss"/>
 										<fmt:parseDate var="endDate" value = "${performance.pfm_end}" pattern = "yyyy-MM-dd HH:mm:ss"/>
 										<fmt:formatDate value = "${startDate}" type = "date"/>
-										<c:if test = "${performance.pfm_start eq performance.pfm_end}">
-										<fmt:formatDate value = "${endDate}" type = "date"/>
+										<c:if test = "${performance.pfm_start != performance.pfm_end}">
+										~<fmt:formatDate value = "${endDate}" type = "date"/>
 										</c:if>
 									</td>
 								</tr>
@@ -61,6 +61,15 @@
 									<th><span>출연</span></th>
 									<td>${performance.pfm_actor}</td>
 								</tr>
+								<c:if test = "${LoginUser.mem_auth eq 1}">
+								<tr>
+									<td/>
+									<td class = "btn_grp">
+										<input type = "button" id = "update" value = "정보수정" onclick = "location.href='perform.do?command=performance_update_form'">
+										<input type = "button" id = "delete" value = "삭제" onclick = "location.href='perform.do?command=performance_delete&pfm_no=${performance.pfm_no}'">
+									</td>
+								</tr>
+								</c:if>
 							</table>
 						</div>
 					</div>

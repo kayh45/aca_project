@@ -8,7 +8,9 @@ import com.musicon.controller.action.MemberLoginAction;
 import com.musicon.controller.action.MemberLogoutAction;
 import com.musicon.controller.action.MemberUpdateAction;
 import com.musicon.controller.action.MemberUpdateFormAction;
+import com.musicon.controller.action.PerformanceDeleteAction;
 import com.musicon.controller.action.PerformanceListAction;
+import com.musicon.controller.action.PerformanceSearchAllAction;
 import com.musicon.controller.action.PerformanceViewAction;
 import com.musicon.controller.action.PerformanceWriteAction;
 import com.musicon.controller.action.PerformanceWriteFormAction;
@@ -78,6 +80,10 @@ public class ActionFactory {
 			action = new PerformanceViewAction();
 		} else if (command.equals("performance_list")){
 			action = new PerformanceListAction();
+		} else if (command.equals("performance_search_all")){
+			action = new PerformanceSearchAllAction();
+		} else if (command.equals("performance_delete")){
+			action = new PerformanceDeleteAction();
 		}
 		
 		return action;

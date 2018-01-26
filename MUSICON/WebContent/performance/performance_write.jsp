@@ -5,15 +5,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel = "stylesheet" type = "text/css" href = "../css/common.css">
-<link rel = "stylesheet" type = "text/css" href = "../css/search.css">
-<link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css">
-<link rel = "stylesheet" type = "text/css" href = "../css/member.css">
-
 <link rel = "stylesheet" type = "text/css" href = "css/common.css">
 <link rel = "stylesheet" type = "text/css" href = "css/search.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <link rel = "stylesheet" type = "text/css" href = "css/member.css">
+<link rel = "stylesheet" type = "text/css" href = "css/perform.css">
+<script type = "text/javascript" src="script/performanceCheck.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Musicon :: 공연 등록</title>
 </head>
@@ -65,7 +62,7 @@
 					<tr>
 						<td class = "lbl">공연시작일자</td>
 						<td class = "input"><input id = "date" type = "date" name = "pfm_start"></td>
-						<td>${message}</td>
+						<td><input type = "button" value = "당일" onclick = "sameDate()"></td>
 					</tr>
 					<tr>
 						<td class = "lbl">공연종료일자</td>
@@ -85,12 +82,13 @@
 								<option value = "울산/경남">울산/경남</option>
 								<option value = "광주/전남">광주/전남</option>
 								<option value = "대전/충남">대전/충남</option>
-								<option value = "부산">부산</option>
+								<option value = "대구/경북">대구/경북</option>
 								<option value = "전북">전북</option>
 								<option value = "강원">강원</option>
 								<option value = "충북">충북</option>
 								<option value = "제주">제주</option>
-								<option value = "경북">경북</option>
+								<option value = "부산">부산</option>
+								
 							</select></td>
 						<td></td>				
 					</tr>	
@@ -115,7 +113,7 @@
 					</tr>	
 					<tr class = "button_grp">
 						<td colspan = "3">							
-							<input type = "submit" value = "등록">
+							<input type = "submit" value = "등록" onclick="return pfmWriteCheck()">
 							<input type = "button" value = "뒤로가기" onclick = "javascript:history.go(-1)">
 						</td>
 					</tr>									

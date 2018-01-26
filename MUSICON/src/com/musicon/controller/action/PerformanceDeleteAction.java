@@ -12,10 +12,10 @@ public class PerformanceDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String num = request.getParameter("num");
+		String pfm_no = request.getParameter("pfm_no");
 		
 		PerformanceDAO pDao = PerformanceDAO.getInstance();
-		pDao.deletePerformance(num);
+		pDao.deletePerformance(pfm_no);
 		
 		new PerformanceListAction().execute(request, response);
 	}

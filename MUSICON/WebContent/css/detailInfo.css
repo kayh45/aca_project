@@ -80,7 +80,7 @@
 .body_title {
 	font-size : 17px;
 	border-bottom : double 3px black;
-	font-family: "±¼¸²",Gulim,sans-serif;
+	font-family: "ï¿½ï¿½ï¿½ï¿½",Gulim,sans-serif;
 	font-weight : bold;
 	padding-bottom : 5px;
 }
@@ -140,3 +140,23 @@
 	border-bottom : solid 1px black;
 }
 
+.btn_grp {
+	padding : 5px;
+	margin : 10px;
+}
+
+.btn_grp input{
+	border : none;
+	width : 70px;
+	height : 30px;
+	color : white;
+	margin :0 5px;
+}
+
+#delete {
+	background-color : #a83939;
+}
+
+#update {
+	background-color : #6abcca;
+}
