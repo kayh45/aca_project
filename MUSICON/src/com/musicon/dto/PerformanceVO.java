@@ -13,6 +13,9 @@ private String pfm_loc;
 private String pfm_content;
 private String pfm_div;
 private String pfm_reg;
+private String pfm_pic;
+private String pfm_keywords;
+
 public int getPfm_no() {
 	return pfm_no;
 }
@@ -72,6 +75,18 @@ public String toString() {
 	return "PerformanceVO [pfm_no=" + pfm_no + ", pfm_subject=" + pfm_subject + ", pfm_actor=" + pfm_actor
 			+ ", pfm_start=" + pfm_start + ", pfm_end=" + pfm_end + ", pfm_loc=" + pfm_loc + ", pfm_content="
 			+ pfm_content + ", pfm_div=" + pfm_div + ", pfm_reg=" + pfm_reg + "]";
+}
+public String getPfm_pic() {
+	return pfm_pic;
+}
+public void setPfm_pic(String pfm_pic) {
+	this.pfm_pic = pfm_pic;
+}
+public String getPfm_keywords() {
+	return pfm_keywords;
+}
+public void setPfm_keywords(String pfm_keywords) {
+	this.pfm_keywords = pfm_keywords;
 }
 
 

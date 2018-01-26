@@ -59,9 +59,10 @@
 }
 
 .option {
-	text-align : right;	
-	padding-bottom : 2px;
+	text-align : left;	
+	padding-bottom : 5px;
 	margin-bottom : 5px;
+	margin-left : 10px;
 	border-bottom : solid 1px #b5b5b5;
 }
 
@@ -161,4 +162,63 @@
 	text-decoration : none;
 	color : black;
 	font-size : 14px;
+}
+
+.option input[type = button] {
+		border : none;
+		background-color : #98cffc;
+		width : 80px;
+		height : 35px;
+		font-weight : bold;
+		font-size : 14px;
+		margin-left : 10px;
+		color : white;
+		font-family : '맑은 고딕', 'Tahoma', 'sans-serif';	
+}
+
+.gola {
+	width : 150px;
+	height : 30px;
+}
+
+.pfm_table {
+	width: 90%;
+	margin: 20px;
+}
+
+.pfm_table td {
+	border-bottom : dashed 1px #e8e8e8;
+	padding-top: 20px;
+	padding : 10px;
+}
+
+.pfm_table .lbl {
+	width : 25%;
+	border-right : solid 1px #efefef;
+	text-align : right;
+	padding-right : 20px;
+	font-size : 15px;
+		
+}
+
+.pfm_table .input {
+	padding-left : 20px;
+		
+}
+
+.pfm_table input[type = text] {
+	width : 40%
+}
+
+.pfm_table #sub {
+	width : 100%
+}
+
+.pfm_table #date {
+	width : 60%;
+	text-align : center;
+}
+
+textarea {
+	resize: none;
 }

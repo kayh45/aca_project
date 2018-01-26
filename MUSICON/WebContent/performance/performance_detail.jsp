@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,11 +21,11 @@
 		<!-- 컨텐츠 시작  -->
 		<div id = "content">
 			<div class = "result">
-				<div class = "top_title">"안녕바다 연말공연 〈snow waltz〉" 공연 상세정보</div>
+				<div class = "top_title">"${performance.pfm_subject}" 공연 상세정보</div>
 				<div id = "dtlbox">
 					<div class = "top_body">
 						<div class = "body_poster">
-							<img src = "img/abposterbig.PNG" width = "200px">
+							<img src = "${performance.pfm_pic}" width = "200px">
 							<div id = "btn_group">
 							<button class = "btn_like">공유</button>
 									<div class = "div_like">
@@ -34,27 +36,30 @@
 						</div>
 						</div>
 						<div class = "body_info">
-							<p class = "body_title">안녕바다 연말공연 〈snow waltz〉</p>
+							<p class = "body_title">${performance.pfm_subject}</p>
 							<table class = "body_table">
 								<tr>
 									<th><span>장르</span></th>
-									<td>콘서트</td>
+									<td>${performance.pfm_div}</td>
 								</tr>
 								<tr>
 									<th><span>장소</span></th>
-									<td>홍대 롤링홀</td>
+									<td>${performance.pfm_loc}</td>
 								</tr>
 								<tr>
 									<th><span>기간</span></th>
-									<td>2017-12-10</td>
+									<td>
+										<fmt:parseDate var="startDate" value = "${performance.pfm_start}" pattern = "yyyy-MM-dd HH:mm:ss"/>
+										<fmt:parseDate var="endDate" value = "${performance.pfm_end}" pattern = "yyyy-MM-dd HH:mm:ss"/>
+										<fmt:formatDate value = "${startDate}" type = "date"/>
+										<c:if test = "${performance.pfm_start eq performance.pfm_end}">
+										<fmt:formatDate value = "${endDate}" type = "date"/>
+										</c:if>
+									</td>
 								</tr>
 								<tr>
 									<th><span>출연</span></th>
-									<td>안녕바다</td>
-								</tr>
-								<tr>
-									<th><span>관람시간</span></th>
-									<td>17:00</td>
+									<td>${performance.pfm_actor}</td>
 								</tr>
 							</table>
 						</div>
@@ -62,13 +67,7 @@
 					<div class = "yeme">예매 링크: <a href = "#">인터파크</a> / <a href = "#">yes24</a></div>
 					<div class = "middle_body">
 						<div class = "innertitle"><span>상세 정보</span></div>
-						<img src = "img/abinfo.jpg" width = "580px">
-					</div>
-					<div class = "bottom_body">
-						<div class = "innertitle"><span>추천 공연</span></div>
-						<img src = "img/gbposter.png">
-						<img src = "img/gkposter.png">
-						<img src = "img/bsposter.png">
+						<img src = "${performance.pfm_content}" width = "580px">
 					</div>
 				</div> <!-- dtlbox -->
 			</div> <!-- result -->

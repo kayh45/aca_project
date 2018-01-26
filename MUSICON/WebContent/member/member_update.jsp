@@ -29,7 +29,8 @@
 			<div class = "join_form">
 			<h2 id = "top_sub">회원 정보 수정</h2>
 			<hr>
-			<form method = "post" action = "member.do?command=member_update">
+			<form method = "post" action = "member.do">
+			<input type = "hidden" value = "member_update" name = "command">
 			
 				<table class = "join_table">
 					<tr>

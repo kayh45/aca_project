@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.musicon.dto.PerformKeywordVO;
 import com.musicon.dto.PerformanceVO;
 import com.musicon.util.DBManager;
 
@@ -23,8 +24,8 @@ public class PerformanceDAO {
 	}
 
 	public void insertPerformance(PerformanceVO pVo) {
-		String sql = "insert into performance(pfm_no, pfm_subject, pfm_actor, pfm_start, pfm_end, pfm_loc, pfm_content, pfm_div, pfm_reg) "
-				+ "values(pfm_seq.nextval, ?, ?, to_date(?, 'YYYY-MM-DD'), to_date(?, 'YYYY-MM-DD'), ?, ?, ?, ?)";
+		String sql = "insert into performance(pfm_no, pfm_subject, pfm_actor, pfm_start, pfm_end, pfm_loc, pfm_content, pfm_div, pfm_reg, pfm_pic) "
+				+ "values(pfm_seq.nextval, ?, ?, to_date(?, 'YYYY-MM-DD'), to_date(?, 'YYYY-MM-DD'), ?, ?, ?, ?, ?)";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -41,6 +42,7 @@ public class PerformanceDAO {
 			pstmt.setString(6, pVo.getPfm_content());
 			pstmt.setString(7, pVo.getPfm_div());
 			pstmt.setString(8, pVo.getPfm_reg());
+			pstmt.setString(9, pVo.getPfm_pic());
 
 			System.out.println(pVo.getPfm_actor());
 
@@ -52,7 +54,7 @@ public class PerformanceDAO {
 		}
 	}
 
-	public PerformanceVO getPerformance(int pfm_no) {
+	public PerformanceVO selectPerformance(String pfm_no) {
 		PerformanceVO pVo = null;
 		String sql = "select * from performance where pfm_no=?";
 		Connection conn = null;
@@ -61,7 +63,7 @@ public class PerformanceDAO {
 		try {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, pfm_no);
+			pstmt.setString(1, pfm_no);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				pVo = new PerformanceVO();
@@ -73,6 +75,7 @@ public class PerformanceDAO {
 				pVo.setPfm_content(rs.getString("pfm_content"));
 				pVo.setPfm_div(rs.getString("pfm_div"));
 				pVo.setPfm_reg(rs.getString("pfm_reg"));
+				pVo.setPfm_pic(rs.getString("pfm_pic"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,6 +88,8 @@ public class PerformanceDAO {
 
 	public List<PerformanceVO> selectAllPerformance() {
 		String sql = "select * from performance order by pfm_no desc";
+		
+		PerformKeywordDAO pkDao = PerformKeywordDAO.getInstance();
 
 		List<PerformanceVO> list = new ArrayList<PerformanceVO>();
 		Connection conn = null;
@@ -109,8 +114,21 @@ public class PerformanceDAO {
 				pVo.setPfm_content(rs.getString("pfm_content"));
 				pVo.setPfm_div(rs.getString("pfm_div"));
 				pVo.setPfm_reg(rs.getString("pfm_reg"));
+				pVo.setPfm_pic(rs.getString("pfm_pic"));
 
-				System.out.println(rs.getString("pfm_subject"));
+				List<String> keywordList = pkDao.getKeywordName(rs.getInt("pfm_no"));
+				String words = "";
+				int i = 0;
+				for(String word:keywordList) {					
+					if(i > 0){
+						words += ("/" + word);
+					}else {
+						words += word;
+						i++;
+					}
+				}
+				System.out.println(words);
+				pVo.setPfm_keywords(words);
 				
 				list.add(pVo);
 			}
@@ -123,7 +141,7 @@ public class PerformanceDAO {
 	}
 	
 	
-	public PerformanceVO selectOnePerformanceByNum(String num) {
+	public PerformanceVO selectOnePerformanceByNum(String pfm_no) {
 		String sql = "select * from performance where pfm_no=?";
 
 		PerformanceVO pVo = null;
@@ -135,7 +153,7 @@ public class PerformanceDAO {
 			conn = DBManager.getConnection();
 
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, num);
+			pstmt.setString(1, pfm_no);
 
 			rs = pstmt.executeQuery();
 
@@ -151,6 +169,7 @@ public class PerformanceDAO {
 				pVo.setPfm_div(rs.getString("pfm_div"));
 				pVo.setPfm_reg(rs.getString("pfm_reg"));
 				pVo.setPfm_no(rs.getInt("pfm_no"));
+				pVo.setPfm_pic(rs.getString("pfm_pic"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -163,7 +182,7 @@ public class PerformanceDAO {
 	
 	public void updatePerformance(PerformanceVO pVo) {
 		String sql = "update performance set pfm_subject=?, pfm_actor=?, pfm_start=?, pfm_end=?, "
-				+ "pfm_loc=?, pfm_content=?, pfm_div=?, pfm_reg=? where pfm_no=?";
+				+ "pfm_loc=?, pfm_content=?, pfm_div=?, pfm_reg=?, pfm_pic=? where pfm_no=?";
 
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -181,7 +200,8 @@ public class PerformanceDAO {
 			pstmt.setString(6, pVo.getPfm_content());
 			pstmt.setString(7, pVo.getPfm_div());
 			pstmt.setString(8, pVo.getPfm_reg());
-			pstmt.setInt(9, pVo.getPfm_no());
+			pstmt.setString(9, pVo.getPfm_pic());
+			pstmt.setInt(10, pVo.getPfm_no());
 
 			System.out.println(sql);
 			
@@ -215,4 +235,33 @@ public class PerformanceDAO {
 			e.printStackTrace();
 		}
 	}
+	
+	public int seqCurrval() {
+		
+		String sql = "select pfm_seq.currval from dual";
+
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			rs.next();
+			
+			System.out.println(rs.getInt("currval"));
+			
+			return rs.getInt("currval");
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		
+		return 0;		
+	}
+	
 }

@@ -7,10 +7,11 @@
 <html>
 <head>
 <link rel = "stylesheet" type = "text/css" href = "css/common.css">
+<link rel = "stylesheet" type = "text/css" href = "css/main.css">
 <link rel = "stylesheet" type = "text/css" href = "css/search.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Musicon :: 에러페이지</title>
+<title>Musicon :: 공연정보커뮤니티</title>
 </head>
 <body>
 	<div class = "bgdiv">
@@ -21,9 +22,12 @@
 		<!-- 헤더 끝  -->
 		<!-- 컨텐츠 시작  -->
 		<div id = "content">
-			
-			잘못된 접근입니다.
-			
+			<div class = "content_main">
+				<h1>Error :(</h1>
+				<hr>
+				<h3>잘못된 접근입니다.</h3>
+				<a href = "main.do">메인화면으로 돌아가기</a>
+			</div>
 		</div>
 		<!-- 컨텐츠 끝  -->
 	</div>
