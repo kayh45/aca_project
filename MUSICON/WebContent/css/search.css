@@ -164,6 +164,10 @@
 	font-size : 14px;
 }
 
+.category {
+	width : 80px;
+}
+
 .option input[type = button] {
 		border : none;
 		background-color : #98cffc;

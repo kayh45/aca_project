@@ -19,10 +19,10 @@
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<%@ include file = "board_list.jsp" %>
+					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
-						<p class = "big_detail"><a href ="board_review.html" class = "headlink">정보 공유</a></p>
+						<p class = "big_detail"><a href ="board_review.html" class = "headlink">사진 갤러리</a></p>
 						<form method = "post" action = "">
 						<table id = "detail">
 							<tr class = "title">
@@ -34,13 +34,23 @@
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "dtl_content">
+										<c:choose>
+											<c:when test = "${board.brd_vid != null}">
+												<c:set var = "prv_src" value = "https://www.youtube.com/embed/"/>
+												<c:set var = "vid_src" value = "${prv_src}${board.brd_vid}"/>
+												<iframe width="500" height="300" src="${vid_src}" 
+												frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>							
+											</c:when>
+										<c:otherwise>
+											<h2>영상을 불러올 수 없습니다.</h2>
+										</c:otherwise>
+										</c:choose>
+										<hr>
 										${board.brd_content}
 										<%-- 
 										
 										
-										
-										게시물 내용이 들어올 것임 
-										
+										게시물 내용이 들어올 것임 									
 										
 										
 										--%>

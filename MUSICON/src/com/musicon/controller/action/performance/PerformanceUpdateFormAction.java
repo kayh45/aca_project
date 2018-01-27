@@ -1,34 +1,35 @@
-package com.musicon.controller.action;
+package com.musicon.controller.action.performance;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.musicon.dao.PerformKeywordDAO;
+import com.musicon.controller.action.Action;
 import com.musicon.dao.PerformanceDAO;
-import com.musicon.dto.PerformKeywordVO;
 import com.musicon.dto.PerformanceVO;
 
-public class PerformanceListAction implements Action {
+public class PerformanceUpdateFormAction implements Action{
+
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/performance/performance.jsp";
+		String url = "/performance/performanceUpdate.jsp";
+		
+		String num = request.getParameter("num");
 		
 		PerformanceDAO pDao = PerformanceDAO.getInstance();
-		PerformKeywordDAO pkDao = PerformKeywordDAO.getInstance();
 		
-		List<PerformanceVO> PerformanceList = pDao.selectAllPerformance();
 		
-		request.setAttribute("performanceList", PerformanceList);
-		request.setAttribute("keywordList", pkDao.keywordRank());
+		
+		PerformanceVO pVo = pDao.selectOnePerformanceByNum(num);
+		
+		request.setAttribute("performance", pVo);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		
 	}
-
+	
 }

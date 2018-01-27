@@ -1,4 +1,4 @@
-package com.musicon.controller.action;
+package com.musicon.controller.action.member;
 
 import java.io.IOException;
 
@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import com.musicon.controller.action.Action;
 
 
 public class MemberLogoutAction implements Action {

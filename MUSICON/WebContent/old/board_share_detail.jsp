@@ -19,10 +19,10 @@
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<%@ include file = "board_list.jsp" %>
+					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
-						<p class = "big_detail"><a href ="board_review.html" class = "headlink">사진 갤러리</a></p>
+						<p class = "big_detail"><a href ="board_review.html" class = "headlink">정보 공유</a></p>
 						<form method = "post" action = "">
 						<table id = "detail">
 							<tr class = "title">
@@ -34,8 +34,6 @@
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "dtl_content">
-										<img src = "${board.brd_pic}">
-										<hr>
 										${board.brd_content}
 										<%-- 
 										

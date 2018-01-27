@@ -1,4 +1,4 @@
-package com.musicon.controller.action;
+package com.musicon.controller.action.member;
 
 import java.io.IOException;
 
@@ -6,25 +6,30 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import com.musicon.controller.action.Action;
 import com.musicon.dao.MemberDAO;
-import com.musicon.dto.MemberVO;
 
-public class MemberUpdateFormAction implements Action {
+public class MemberIdCheckAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "member/member_update.jsp";
+
+		String url = "member/idCheck.jsp";
+		
+		String mem_id = request.getParameter("mem_id");
 		
 		MemberDAO mDao = MemberDAO.getInstance();
-		MemberVO mVo = mDao.getMemberInfo(request.getParameter("mem_id"));
+		int result = mDao.confirmID(mem_id);
 		
-		request.setAttribute("member", mVo);
+		System.out.println("idcheck");
+		
+		request.setAttribute("mem_id", mem_id);
+		request.setAttribute("result", result);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);	
-	}
+		dispatcher.forward(request, response);
 		
+	}
 
 }

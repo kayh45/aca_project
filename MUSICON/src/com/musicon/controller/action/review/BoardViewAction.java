@@ -17,19 +17,28 @@ public class BoardViewAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/review/board_review_detail.jsp";
+		String url = "/board/board_view.jsp";
 		
 		String brd_no = request.getParameter("brd_no");
-		
+		String boardType = request.getParameter("boardType");
+		BoardPerformanceVO bVo = null;		
 		BoardDAO bDao = BoardDAO.getInstance();
 		
-		bDao.updateBrdView(brd_no);
+		bDao.addView(brd_no);
 		
-		BoardPerformanceVO bVo = bDao.selectOneReviewByBrd_no(brd_no);
+		if(boardType.equals("review")){
+			bVo = bDao.selectOneBoardReview(brd_no);
+		}else {
+			bVo = bDao.selectOneBoard(brd_no);
+		}
+
 		List<BoardReplyVO> boardReplyList = bDao.selectAllBrpl(brd_no);
+		
 		
 		request.setAttribute("board", bVo);
 		request.setAttribute("boardReplyList", boardReplyList);
+		request.setAttribute("boardType", boardType);
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

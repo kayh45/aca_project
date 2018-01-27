@@ -21,9 +21,9 @@ public class BoardUpdateFormAction implements Action{
 		
 		BoardDAO bDao = BoardDAO.getInstance();
 		
-		bDao.updateBrdView(brd_no);
+		bDao.addView(brd_no);
 		
-		BoardPerformanceVO bVo = bDao.selectOneReviewByBrd_no(brd_no);
+		BoardPerformanceVO bVo = bDao.selectOneBoardReview(brd_no);
 		
 		request.setAttribute("board", bVo);
 		

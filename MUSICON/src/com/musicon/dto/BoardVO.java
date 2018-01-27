@@ -1,6 +1,6 @@
 package com.musicon.dto;
 
-public class BoardVO {
+public class BoardVO extends MemberVO{
 	/*CREATE TABLE board(
 			 brd_no                NUMBER(10)  PRIMARY KEY,
 			 brd_div               VARCHAR2(10)  NOT NULL ,

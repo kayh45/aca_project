@@ -22,7 +22,7 @@
 		<!-- 컨텐츠 시작  -->
 		<div id = "content">
 			<div class = "menubar">
-				<%@ include file = "../board_list.jsp" %>
+				<%@ include file = "../board_menu.jsp" %>
 			</div>
 				<div id = "rsbox">
 					<p class = "big">공연 리뷰</p>
@@ -68,7 +68,7 @@
 							<%-- ↑ 게시물테이블과 회원테이블을 조인하여 가져옴 --%>
 							<td class = "date">${board.brd_date}</td>
 							<td class = "hit">${board.brd_view}</td>
-							<td class = "like">${board.brd_like}</td>
+							<td class = "likes">${board.brd_like}</td>
 						</tr>
 					</c:forEach>						
 					</table>

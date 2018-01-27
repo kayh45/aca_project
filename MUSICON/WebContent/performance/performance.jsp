@@ -48,8 +48,10 @@
 						<c:if test = "${keywordList != null}">
 						<c:forEach var = "key" items = "${keywordList}">
 						<c:set var = "index" value = "${index+1}"/>
+						<span id = "kwdspan">
 						<input type = "checkbox" name = "kwds" id = "top-kw-1" value = "${key}">
 						<label for = "top-kw-${index}">${key}</label>
+						</span>
 						</c:forEach>
 						</c:if>
 					</div>
@@ -69,9 +71,9 @@
 						<input type = "checkbox" name = "regs" id = "location-kw-5" value = "대전/충남">
 						<label for = "location-kw-5">대전/충남</label>
 						<input type = "checkbox" name = "regs" id = "location-kw-6" value = "대구/경북">
-						<label for = "location-kw-6">대구/경북</label>
+						<label for = "location-kw-6">대구/경북</label><br>
 						<input type = "checkbox" name = "regs" id = "location-kw-7" value = "전북">
-						<label for = "location-kw-7">전북</label><br>
+						<label for = "location-kw-7">전북</label>
 						<input type = "checkbox" name = "regs" id = "location-kw-8" value = "강원">
 						<label for = "location-kw-8">강원</label>
 						<input type = "checkbox" name = "regs" id = "location-kw-9" value = "충북">

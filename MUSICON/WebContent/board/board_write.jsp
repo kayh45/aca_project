@@ -9,20 +9,22 @@
 <link rel = "stylesheet" type = "text/css" href = "css/boardWrite.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MUSICON :: 공연 리뷰 게시판</title>
+<title>MUSICON :: 게시물 작성</title>
 </head>
 <body>
 	<header>
-		<%@ include file = "../../header.jsp" %>
+		<%@ include file = "../header.jsp" %>
 	</header>
 	<div class = "bgdiv">
 			<!-- 컨텐츠 시작  -->
-		<div id = "content">
-			<div class = "menubar">
-				<%@ include file = "../board_list.jsp" %>
-			</div>
+			<div id = "content">
+				<div class = "menubar">
+					<%@ include file = "board_menu.jsp" %>
+				</div>
 					<div id = "rsbox">
-						<form method = "post" action = "board.do?command=review_write">						
+						<form method = "post" action = "board.do">	
+							<input type = "hidden" name = "command" value = "board_write">					
+							<input type = "hidden" name = "boardType" value = "${boardType}">					
 							<table id = "detail" class = "write_form">
 								<tr class = "title">
 									<td colspan = "2">
@@ -35,9 +37,11 @@
 										<input type = "text" name = "brd_subject">
 									</td>
 								</tr>
+								<c:choose>
+								<c:when test = "${boardType eq 'review'}">
 								<tr class = "title">
 									<td class = "td_subject">공연</td>									
-									<td class = "pfm_srch">
+									<td class = "url">
 										<input type = "text" name = "pfm_subject">
 										<input type = "text" name = "pfm_no">
 										<%--나중에 hidden으로 바꿔줌 --%>
@@ -45,13 +49,32 @@
 										${inform}
 									</td>
 								</tr>
+								</c:when>
+								<c:when test = "${boardType eq 'photo'}">
+									<tr class = "title">
+									<td class = "td_subject">사진 URL</td>									
+									<td class = "url">
+										<input type = "text" name = "brd_pic">
+										<input id = "srch_btn" type = "button" value = "미리보기">
+									</td>
+								</tr>
+								</c:when>
+								<c:when test = "${boardType eq 'video'}">
+									<tr class = "title">
+									<td class = "td_subject">유튜브 공유 URL</td>									
+									<td class = "url">
+										<input type = "text" name = "brd_vid">
+										<input id = "srch_btn" type = "button" value = "미리보기">
+									</td>
+								</tr>
+								</c:when>
+								</c:choose>
 								<tr class = "title">
 									<td class = "td_subject">내용</td>
 									<td class = "td_content">
 										<textarea name = "brd_content" cols = "50" rows = "20"></textarea>
 									<input type = "hidden" name = "mem_no" value = "${LoginUser.mem_no}">
-									</td>
-									
+									</td>									
 								</tr>
 								<tr class = "title">
 									<td colspan = "2" id = "button_grp">
@@ -63,12 +86,9 @@
 						</form>
 					</div>
 			</div>
-			</div>
-		
-		<!-- 컨텐츠 끝  -->
-			</div>
+	</div>
 	<footer>
-		<%@ include file = "../../footer.jsp" %>
+		<%@ include file = "../footer.jsp" %>
 	</footer>
 </body>
 </html>

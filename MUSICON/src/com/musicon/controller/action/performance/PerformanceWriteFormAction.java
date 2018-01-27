@@ -1,4 +1,4 @@
-package com.musicon.controller.action;
+package com.musicon.controller.action.performance;
 
 import java.io.IOException;
 
@@ -7,14 +7,18 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-public class MemberInfoAction implements Action {
+import com.musicon.controller.action.Action;
+
+public class PerformanceWriteFormAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "member/member_info.jsp";
+
+		String url = "performance/performance_write.jsp";
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
+		
 	}
 
 }

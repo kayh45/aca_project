@@ -1,4 +1,4 @@
-package com.musicon.controller.action;
+package com.musicon.controller.action.performance;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.musicon.controller.action.Action;
 import com.musicon.dao.PerformKeywordDAO;
 import com.musicon.dao.PerformanceDAO;
 import com.musicon.dto.PerformanceVO;
@@ -61,10 +62,7 @@ public class PerformanceSearchAllAction implements Action {
 		}
 		
 		
-		
-		if(keywords==null && regs==null){
-			set.addAll(pDao.searchBySubject(search));
-		}
+		set.retainAll(pDao.searchBySubject(search));
 		
 		
 		for(String pfm_no:set) { // set의 공연번호와 분류를 기준으로 list를 만듦	

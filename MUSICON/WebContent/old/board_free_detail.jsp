@@ -19,7 +19,7 @@
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<%@ include file = "board_list.jsp" %>
+					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
 						<p class = "big_detail"><a href ="board_review.html" class = "headlink">자유게시판</a></p>

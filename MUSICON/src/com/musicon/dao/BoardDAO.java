@@ -25,6 +25,48 @@ public class BoardDAO {
 		return instance;
 	}
 	
+	// 리뷰게시판을 제외한 모든 게시판리스트
+	public List<BoardVO> selectAllBoard(String brd_div){
+		String sql = "select * from board b, member m where b.mem_no = m.mem_no"
+				+ " and brd_div=? order by brd_no desc";
+
+		List<BoardVO> list = new ArrayList<BoardVO>();
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, brd_div);
+			
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				BoardVO bVo = new BoardVO();
+
+				bVo.setBrd_no(rs.getInt("brd_no"));
+				bVo.setBrd_div(rs.getString("brd_div"));
+				bVo.setBrd_subject(rs.getString("brd_subject"));
+				bVo.setMem_no(rs.getInt("mem_no"));
+				bVo.setBrd_date(rs.getString("brd_date"));
+				bVo.setBrd_view(rs.getInt("brd_view"));
+				bVo.setBrd_like(rs.getInt("brd_like"));
+				bVo.setBrd_content(rs.getString("brd_content"));
+				bVo.setBrd_pic(rs.getString("brd_pic"));
+				bVo.setBrd_pic(rs.getString("brd_vid"));
+				bVo.setMem_nick(rs.getString("mem_nick"));
+
+				list.add(bVo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return list;
+	}
+	
 	// 리뷰게시판
 	public List<BoardPerformanceVO> selectAllReview(){ 
 		// 조인 추가 했음 -현
@@ -68,8 +110,10 @@ public class BoardDAO {
 		return list;
 	}
 	
-	public void insertReview(BoardPerformanceVO bVo){
-		String sql = "insert into board(brd_no, brd_div, brd_subject, brd_content, mem_no, pfm_no) values (brd_seq.nextval, 'review', ?, ?, ?, ?)";
+	public void writeBoard(BoardPerformanceVO bVo, String brd_div){
+		String sql = "insert into board(brd_no, brd_div, brd_subject, brd_content, "
+				+ "mem_no, pfm_no, brd_pic, brd_vid) "
+				+ "values (brd_seq.nextval, ?, ?, ?, ?, ?, ?, ?)";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -78,10 +122,22 @@ public class BoardDAO {
 			conn = DBManager.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			
-			pstmt.setString(1, bVo.getBrd_subject());
-			pstmt.setString(2, bVo.getBrd_content());
-			pstmt.setInt(3, bVo.getMem_no());
-			pstmt.setInt(4, bVo.getPfm_no());
+			
+			pstmt.setString(1, brd_div);
+			pstmt.setString(2, bVo.getBrd_subject());
+			pstmt.setString(3, bVo.getBrd_content());
+			pstmt.setInt(4, bVo.getMem_no());
+			
+			System.out.println(bVo.getPfm_no());
+			
+			if(bVo.getPfm_no() != 0) {
+				pstmt.setInt(5, bVo.getPfm_no());
+			}else {
+				pstmt.setString(5, null);
+			}
+			
+			pstmt.setString(6, bVo.getBrd_pic());
+			pstmt.setString(7, bVo.getBrd_vid());
 			
 			pstmt.executeUpdate();
 		} catch(Exception e){
@@ -91,7 +147,7 @@ public class BoardDAO {
 		}
 	}
 	
-	public void updateBrdView(String brd_no){
+	public void addView(String brd_no){
 		String sql = "update board set brd_view = brd_view + 1 where brd_no=?";
 		
 		Connection conn = null;
@@ -112,7 +168,7 @@ public class BoardDAO {
 	}
 	
 	// 게시판 글 상세 내용 보기 : 글번호로 찾아온다. : 실패 null,
-	public BoardPerformanceVO selectOneReviewByBrd_no(String brd_no){
+	public BoardPerformanceVO selectOneBoardReview(String brd_no){
 		String sql = "select * from board b, performance p "
 				+ "where b.pfm_no = p.pfm_no and brd_no=?";
 		
@@ -155,6 +211,46 @@ public class BoardDAO {
 		}
 		return bVo;
 	}
+	
+	public BoardPerformanceVO selectOneBoard(String brd_no){
+		String sql = "select * from board where brd_no=?";
+		
+		BoardPerformanceVO bVo = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try{
+			conn = DBManager.getConnection();
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, brd_no);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				bVo = new BoardPerformanceVO();
+				
+				bVo.setBrd_no(rs.getInt("brd_no"));
+				bVo.setBrd_div(rs.getString("brd_div"));
+				bVo.setBrd_subject(rs.getString("brd_subject"));
+				bVo.setMem_no(rs.getInt("mem_no"));
+				bVo.setBrd_date(rs.getString("brd_date"));
+				bVo.setBrd_pic(rs.getString("brd_pic"));
+				bVo.setBrd_vid(rs.getString("brd_vid"));
+				bVo.setBrd_view(rs.getInt("brd_view"));
+				bVo.setBrd_like(rs.getInt("brd_like"));
+				bVo.setBrd_content(rs.getString("brd_content"));
+			}
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return bVo;
+	}
+	
+	
 	
 	public void updateReview(BoardVO bVo){
 		String sql = "update board set brd_subject=?, brd_content=? where brd_no=?";

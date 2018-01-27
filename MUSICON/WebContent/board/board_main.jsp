@@ -9,7 +9,7 @@
 <link rel = "stylesheet" type = "text/css" href = "css/board.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>MUSICON :: 게시판</title>
 </head>
 <body>
 	<header>
@@ -19,7 +19,7 @@
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<%@ include file = "board_list.jsp" %>
+					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
 						

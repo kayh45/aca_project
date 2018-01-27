@@ -15,14 +15,24 @@ public class BoardWriteAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		BoardPerformanceVO bVo = new BoardPerformanceVO();
-
-		bVo.setBrd_subject(request.getParameter("brd_subject"));
-		bVo.setMem_no(Integer.parseInt(request.getParameter("mem_no")));
-		bVo.setBrd_content(request.getParameter("brd_content"));
-		bVo.setPfm_no(Integer.parseInt(request.getParameter("pfm_no")));
+		String boardType = request.getParameter("boardType");
 		
+		bVo.setBrd_subject(request.getParameter("brd_subject"));
+		bVo.setBrd_content(request.getParameter("brd_content"));
+		bVo.setMem_no(Integer.parseInt(request.getParameter("mem_no")));
+		
+		if (boardType.equals("review")) {
+			bVo.setPfm_no(Integer.parseInt(request.getParameter("pfm_no")));
+		} else if(boardType.equals("photo")) {
+			bVo.setBrd_pic(request.getParameter("brd_pic"));			
+		}else if(boardType.equals("video")) {
+			bVo.setBrd_vid(request.getParameter("brd_vid").substring(17));		
+		}
+
 		BoardDAO bDao = BoardDAO.getInstance();
-		bDao.insertReview(bVo);
+		bDao.writeBoard(bVo, boardType);
+		
+		request.setAttribute("boardType", boardType);
 		
 		new BoardListAction().execute(request, response);
 		

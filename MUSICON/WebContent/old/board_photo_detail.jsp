@@ -9,21 +9,21 @@
 <link rel = "stylesheet" type = "text/css" href = "css/board.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>MUSICON :: 공연 리뷰 게시판</title>
+<title>Insert title here</title>
 </head>
 <body>
 	<header>
-		<%@ include file = "../../header.jsp" %>
+		<%@ include file = "../header.jsp" %>
 	</header>
 	<div class = "bgdiv">
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<%@ include file = "../board_list.jsp" %>
+					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
-						<p class = "big_detail"><a href ="board_review.html" class = "headlink">공연 리뷰</a></p>
-						
+						<p class = "big_detail"><a href ="board_review.html" class = "headlink">사진 갤러리</a></p>
+						<form method = "post" action = "">
 						<table id = "detail">
 							<tr class = "title">
 								<td class = "number_detail">No.${board.brd_no}</td>
@@ -33,25 +33,9 @@
 							</tr>
 							<tr class = "title">
 								<td colspan = "3">
-									<div class = "info">
-										<img src = "img/abposter.jpg" width = "100px">
-									</div>
-									<div class = "info">
-										<p>공연명: ${board.pfm_subject}</p>
-										<p>장소: ${board.pfm_loc}</p>
-										<fmt:parseDate var="dateString" value = "${board.pfm_start}" pattern = "yyyy-MM-dd HH:mm:ss"/>
-										<p>기간: <fmt:formatDate value = "${dateString}" type = "date"/></p>
-										<p>출연: ${board.pfm_actor}</p>
-										<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
-									</div>
-									<div class = "info" id = "info_btn">
-										<button class = "new_wdw" onclick="window.open('search/detailInfo.html')">새 창에서 보기</button>
-									</div>
-								</td>
-							</tr>
-							<tr class = "title">
-								<td colspan = "3">
 									<div class = "dtl_content">
+										<img src = "${board.brd_pic}">
+										<hr>
 										${board.brd_content}
 										<%-- 
 										
@@ -72,20 +56,10 @@
 											<img src = "img/facebook.png" width = "25px">
 											<img src = "img/rss.png" width = "25px">
 										</div>
-										<c:choose>
-											<c:when test = "${LoginUser.mem_no eq board.mem_no}">
-												<button class = "btn_delete">삭제</button>
-												<button class = "btn_like">수정</button>
-											</c:when>
-											<c:when test = "${LoginUser.mem_auth eq 1}">
-												<button class = "btn_delete">삭제</button>
-											</c:when>
-										</c:choose>
-									
 									</div>
 								</td> 
 							</tr>
-							<c:forEach var = "board_reply" items = "${board_reply_list}">
+							<c:foreach var = "board_reply" items = "${board_reply_list}">
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "dtl_comment">
@@ -104,10 +78,9 @@
 									</div>
 								</td>
 							</tr>
-							</c:forEach>							
+							</c:foreach>							
 							<tr class = "title" id = "cmt">
-							<td colspan = "3">
-								<form method = "post" action = "">
+								<td colspan = "3">
 									<input type = "hidden" name = "mem_no" value = "${loginUser.mem_no}">
 									<input type = "hidden" name = "brd_no" value = "${board.brd_no}">
 									<%-- ↑ 로그인 시 만들어진 세션으로 가져옴 --%>
@@ -117,16 +90,16 @@
 									<div class = "cmt_submit">
 										<button type = "submit">작성</button>
 									</div>
-								</form>
 								</td>
 								
 							</tr>							
 						</table>
+						</form>
 					</div>
 			</div>
 			</div>
 	<footer>
-		<%@ include file = "../../footer.jsp" %>
+		<%@ include file = "../footer.jsp" %>
 	</footer>
 </body>
 </html>

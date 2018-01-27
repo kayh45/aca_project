@@ -1,21 +1,21 @@
 package com.musicon.controller;
 
 import com.musicon.controller.action.Action;
-import com.musicon.controller.action.MemberIdCheckAction;
-import com.musicon.controller.action.MemberInfoAction;
-import com.musicon.controller.action.MemberJoinAction;
-import com.musicon.controller.action.MemberJoinFormAction;
-import com.musicon.controller.action.MemberLoginAction;
-import com.musicon.controller.action.MemberLogoutAction;
-import com.musicon.controller.action.MemberUpdateAction;
-import com.musicon.controller.action.MemberUpdateFormAction;
-import com.musicon.controller.action.PerformanceDeleteAction;
-import com.musicon.controller.action.PerformanceListAction;
-import com.musicon.controller.action.PerformanceSearchAllAction;
-import com.musicon.controller.action.PerformanceViewAction;
-import com.musicon.controller.action.PerformanceWriteAction;
-import com.musicon.controller.action.PerformanceWriteFormAction;
 import com.musicon.controller.action.brpl.BrplWriteAction;
+import com.musicon.controller.action.member.MemberIdCheckAction;
+import com.musicon.controller.action.member.MemberInfoAction;
+import com.musicon.controller.action.member.MemberJoinAction;
+import com.musicon.controller.action.member.MemberJoinFormAction;
+import com.musicon.controller.action.member.MemberLoginAction;
+import com.musicon.controller.action.member.MemberLogoutAction;
+import com.musicon.controller.action.member.MemberUpdateAction;
+import com.musicon.controller.action.member.MemberUpdateFormAction;
+import com.musicon.controller.action.performance.PerformanceDeleteAction;
+import com.musicon.controller.action.performance.PerformanceListAction;
+import com.musicon.controller.action.performance.PerformanceSearchAllAction;
+import com.musicon.controller.action.performance.PerformanceViewAction;
+import com.musicon.controller.action.performance.PerformanceWriteAction;
+import com.musicon.controller.action.performance.PerformanceWriteFormAction;
 import com.musicon.controller.action.review.BoardDeleteAction;
 import com.musicon.controller.action.review.BoardListAction;
 import com.musicon.controller.action.review.BoardUpdateAction;
@@ -43,13 +43,13 @@ public class ActionFactory {
 		
 		System.out.println("ActionFactory : " + command);
 	
-		if(command.equals("review_list")){
+		if(command.equals("board_list")){
 			action = new BoardListAction();
-		} else if(command.equals("review_write_form")){
+		} else if(command.equals("board_write_form")){
 			action = new BoardWriteFormAction();
-		} else if(command.equals("review_write")){
+		} else if(command.equals("board_write")){
 			action = new BoardWriteAction();
-		} else if(command.equals("review_view")){
+		} else if(command.equals("board_view")){
 			action = new BoardViewAction();
 		} else if(command.equals("board_update_form")){
 			action = new BoardUpdateFormAction();

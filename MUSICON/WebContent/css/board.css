@@ -91,8 +91,8 @@
 	width : 600px;
 }
 
-#rsbox tr:not(.title), 
-#rsbox td:not(.subject) {
+#items tr:not(.title), 
+#items td:not(.subject) {
 	font-size : 12px;
 	padding : 8px;
 	border-bottom : dotted 1px #ddd;
@@ -225,8 +225,13 @@
 }
 
 tr > .subject {
-	text-align : left;
+	text-align : center;
 	padding-left : 10px;
+	width : 200px;
+}
+
+tr > .date {
+	width : 100px;
 }
 
 .boardbox > table{
@@ -328,8 +333,17 @@ td > a {
 	color : black;
 }
 
+#detail {
+	
+	text-align : center;
+}
+
 #detail .number_detail {
 	width : 10%;
+}
+
+#detail .subject_detail {
+	width : 70%;
 }
 
 #detail .theme_detail {

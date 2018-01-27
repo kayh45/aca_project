@@ -19,7 +19,7 @@
 			<!-- 컨텐츠 시작  -->
 			<div id = "content">
 				<div class = "menubar">
-					<%@ include file = "../board_list.jsp" %>
+					<%@ include file = "../board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
 						<p class = "big_detail"><a href ="board_review.html" class = "headlink">공연 리뷰</a></p>
@@ -45,9 +45,9 @@
 										<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
 									</div>
 									<div class = "info" id = "info_btn">
-									<form method = "post" action = "perform.do">
+									<form method = "post"  target = "_blank" action = "perform.do?pfm_no=${board.pfm_no}">
 									<input type = "hidden" name = "command" value = "performance_view">
-									<input type = "hidden" name = "pfm_no" value = "${board.pfm_no}">
+									<%-- <input type = "hidden" name = "pfm_no" value = "${board.pfm_no}"> --%>
 										<button type = "submit" class = "new_wdw">새 창에서 보기</button>
 									</form>
 									</div>

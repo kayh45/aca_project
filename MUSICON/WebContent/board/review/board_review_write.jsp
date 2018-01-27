@@ -19,7 +19,7 @@
 			<!-- 컨텐츠 시작  -->
 		<div id = "content">
 			<div class = "menubar">
-				<%@ include file = "../board_list.jsp" %>
+				<%@ include file = "../board_menu.jsp" %>
 			</div>
 					<div id = "rsbox">
 						<form method = "post" action = "board.do?command=review_write">						
