@@ -28,6 +28,7 @@ public class MemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		String command = request.getParameter("command");
 		System.out.println("memberServlet에서 요청을 받음을 확인 : " + command);
 		

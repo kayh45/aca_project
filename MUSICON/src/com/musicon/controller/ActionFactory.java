@@ -14,17 +14,22 @@ import com.musicon.controller.action.board.BoardWriteAction;
 import com.musicon.controller.action.board.BoardWriteFormAction;
 import com.musicon.controller.action.board.BrplDeleteAction;
 import com.musicon.controller.action.board.BrplWriteAction;
+import com.musicon.controller.action.member.MemberDeleteAction;
 import com.musicon.controller.action.member.MemberIdCheckAction;
 import com.musicon.controller.action.member.MemberInfoAction;
 import com.musicon.controller.action.member.MemberJoinAction;
 import com.musicon.controller.action.member.MemberJoinFormAction;
+import com.musicon.controller.action.member.MemberListAction;
 import com.musicon.controller.action.member.MemberLoginAction;
 import com.musicon.controller.action.member.MemberLogoutAction;
+import com.musicon.controller.action.member.MemberNickCheckAction;
 import com.musicon.controller.action.member.MemberUpdateAction;
 import com.musicon.controller.action.member.MemberUpdateFormAction;
 import com.musicon.controller.action.performance.PerformanceDeleteAction;
 import com.musicon.controller.action.performance.PerformanceListAction;
 import com.musicon.controller.action.performance.PerformanceSearchAllAction;
+import com.musicon.controller.action.performance.PerformanceUpdateAction;
+import com.musicon.controller.action.performance.PerformanceUpdateFormAction;
 import com.musicon.controller.action.performance.PerformanceViewAction;
 import com.musicon.controller.action.performance.PerformanceWriteAction;
 import com.musicon.controller.action.performance.PerformanceWriteFormAction;
@@ -86,8 +91,14 @@ public class ActionFactory {
 			action = new MemberUpdateFormAction();
 		} else if (command.equals("member_update")){
 			action = new MemberUpdateAction();
+		} else if (command.equals("member_list")){
+			action = new MemberListAction();
+		} else if (command.equals("member_delete")){
+			action = new MemberDeleteAction();
 		} else if (command.equals("member_id_check")){
 			action = new MemberIdCheckAction();
+		} else if (command.equals("member_nick_check")){
+			action = new MemberNickCheckAction();
 		} else if (command.equals("performance_write_form")){
 			action = new PerformanceWriteFormAction();
 		} else if (command.equals("performance_write")){
@@ -100,6 +111,10 @@ public class ActionFactory {
 			action = new PerformanceSearchAllAction();
 		} else if (command.equals("performance_delete")){
 			action = new PerformanceDeleteAction();
+		} else if (command.equals("performance_update_form")){
+			action = new PerformanceUpdateFormAction();
+		} else if (command.equals("performance_update")){
+			action = new PerformanceUpdateAction();
 		} else if (command.equals("main")){
 			action = new MainAction();
 		}

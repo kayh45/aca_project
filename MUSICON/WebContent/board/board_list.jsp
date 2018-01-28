@@ -94,12 +94,15 @@
 					</table>
 					<div id = "wrt_btns">
 						<c:choose>
-							<c:when test = "${LoginUser != null}">
+							<c:when test = "${LoginUser != null and boardType != 'review'}">
 							<form method = "post" action = "board.do">
 							<input type = "hidden" name = "command" value = "board_write_form">
 							<input type = "hidden" name = "boardType" value = "${boardType}">
 							<input type = "submit" value = "글쓰기">
 							</form>
+							</c:when>
+							<c:when test = "${boardType eq 'review'}">
+								<input type = "button" onclick = "window.open('perform.do')" value = "공연검색">								
 							</c:when>
 						</c:choose>
 					</div>

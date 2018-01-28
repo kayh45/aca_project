@@ -15,7 +15,14 @@ public class BoardWriteFormAction implements Action{
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = "/board/board_write.jsp";
 		
+		
+		request.setAttribute("pfm_no", request.getParameter("pfm_no"));
+		request.setAttribute("pfm_subject", request.getParameter("pfm_subject"));
+		request.setAttribute("pfm_actor", request.getParameter("pfm_actor"));
+		request.setAttribute("pfm_pic", request.getParameter("pfm_pic"));
+		request.setAttribute("pfm_loc", request.getParameter("pfm_loc"));
 		request.setAttribute("boardType", request.getParameter("boardType"));
+
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

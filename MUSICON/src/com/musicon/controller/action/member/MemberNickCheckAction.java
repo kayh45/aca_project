@@ -1,4 +1,4 @@
-package com.musicon.controller.action.performance;
+package com.musicon.controller.action.member;
 
 import java.io.IOException;
 
@@ -8,26 +8,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.musicon.controller.action.Action;
-import com.musicon.dao.PerformanceDAO;
-import com.musicon.dto.PerformanceVO;
+import com.musicon.dao.MemberDAO;
 
-public class PerformanceUpdateFormAction implements Action{
+public class MemberNickCheckAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/performance/performance_update.jsp";
+
+		String url = "member/nickCheck.jsp";
 		
-		String pfm_no = request.getParameter("pfm_no");
+		String mem_nick = new String(request.getParameter("mem_nick").getBytes("8859_1"),"utf-8");
+
 		
-		PerformanceDAO pDao = PerformanceDAO.getInstance();		
+		MemberDAO mDao = MemberDAO.getInstance();
+		int result = mDao.confirmNick(mem_nick);
 		
-		PerformanceVO pVo = pDao.selectOnePerformanceByNum(pfm_no);
+		System.out.println(mem_nick);
 		
-		request.setAttribute("performance", pVo);
+		request.setAttribute("mem_nick", mem_nick);
+		request.setAttribute("result", result);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		
 	}
-	
+
 }

@@ -27,12 +27,16 @@
 						<div class = "body_poster">
 							<img src = "${performance.pfm_pic}" width = "200px">
 							<div id = "btn_group">
-							<button class = "btn_like">공유</button>
-									<div class = "div_like">
-										<img src = "img/twitter.png" width = "25px">
-										<img src = "img/facebook.png" width = "25px">
-										<img src = "img/rss.png" width = "25px">
-									</div>
+							<form method = "post" action = "board.do?command=board_write_form&boardType=review">
+							<input type = "hidden" name = "pfm_subject" value = "${performance.pfm_subject}">
+							<input type = "hidden" name = "pfm_no" value = "${performance.pfm_no}">
+							<input type = "hidden" name = "pfm_pic" value = "${performance.pfm_pic}">
+							<input type = "hidden" name = "pfm_actor" value = "${performance.pfm_actor}">
+							<input type = "hidden" name = "pfm_loc" value = "${performance.pfm_loc}">
+							<c:if test = "${LoginUser != null }">
+							<button type = "submit" class = "btn_like">이 공연에 대한 리뷰 작성</button>
+							</c:if>
+							</form>
 						</div>
 						</div>
 						<div class = "body_info">
@@ -65,7 +69,7 @@
 								<tr>
 									<td/>
 									<td class = "btn_grp">
-										<input type = "button" id = "update" value = "정보수정" onclick = "location.href='perform.do?command=performance_update_form'">
+										<input type = "button" id = "update" value = "정보수정" onclick = "location.href='perform.do?command=performance_update_form&pfm_no=${performance.pfm_no}'">
 										<input type = "button" id = "delete" value = "삭제" onclick = "location.href='perform.do?command=performance_delete&pfm_no=${performance.pfm_no}'">
 									</td>
 								</tr>

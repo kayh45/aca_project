@@ -530,3 +530,7 @@ textarea {
 .url input[type = text] {
 	width : 400px;
 }
+
+#write p {
+	font-size : 13px;
+}

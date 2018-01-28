@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type = "text/javascript" src="script/member.js?ver=2"></script>
+<script type = "text/javascript" src="script/member.js?ver=4"></script>
 <link rel = "stylesheet" type = "text/css" href = "css/common.css">
 <link rel = "stylesheet" type = "text/css" href = "css/search.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
@@ -39,7 +39,7 @@
 						<td class = "lbl">닉네임</td>
 						<td class = "input"><input type = "text" name = "mem_nick"></td>
 						<td class = "must">*</td>
-						<td><input type = "button" class = "check_btn" onclick = "return nickCheck()" value = "중복검사"></td>
+						<td><input type = "button" class = "check_btn" onclick = "nickCheck()" value = "중복검사"></td>
 					</tr>
 					<tr>
 						<td class = "lbl">비밀번호</td>

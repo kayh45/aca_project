@@ -92,3 +92,13 @@
 	font-size : 15px;
 	width : 70%
 }
+
+.memList {
+	margin : 10px auto;
+}
+
+.memList td {
+	text-align : center;
+	border : solid 1px #bbbbbb;
+	padding : 5px;
+}

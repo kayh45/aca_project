@@ -532,7 +532,8 @@ td > a {
 	margin : 5px 0;
 }
 
-#wrt_btns input[type = button] {
+#wrt_btns input[type = button],
+#wrt_btns input[type = submit] {
 	width : 80px;
 	height : 30px;
 	border : none;
@@ -541,5 +542,9 @@ td > a {
 	font-weight : bold;
 	color : white;
 	
+}
+
+#wrt_btns input[type = button]{
+	background-color : #147bc7;
 }
 

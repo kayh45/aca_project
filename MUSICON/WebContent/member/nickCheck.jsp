@@ -10,19 +10,19 @@
 <link rel = "stylesheet" type = "text/css" href = "css/member.css">
 </head>
 <body>
-	<h2>아이디 중복확인</h2>
-	<form action="member.do?command=member_id_check" method="post" name="frm">
-		아이디 <input type = "text" name="mem_id" value="${mem_id}"> 
+	<h2>닉네임 중복확인</h2>
+	<form action="member.do?command=member_nick_check" method="post" name="frm">
+		닉네임 <input type = "text" name="mem_nick" value="${mem_nick}"> 
 			 <input type = "submit" value = "중복 체크"> <br>
 		<c:if test="${result == 1}">
 			<script type="text/javascript">
-				opener.document.frm.mem_id.value = "";
+				opener.document.frm.mem_nick.value = "";
 			</script>
-			${mem_id}는 이미 사용 중인 아이디입니다.
+			${mem_nick}는 이미 사용 중인 닉네임입니다.
 		</c:if>
 		<c:if test="${result==-1}">
-		${mem_id}는 사용 가능한 아이디입니다.
-		<input type="button" value="사용" class="cancel" onclick="idok()">
+		${mem_nick}는 사용 가능한 닉네임입니다.
+		<input type="button" value="사용" class="cancel" onclick="nickok()">
 		</c:if>
 	</form>
 </body>

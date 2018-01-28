@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.musicon.dto.MemberVO;
 import com.musicon.util.DBManager;
@@ -212,9 +214,132 @@ public class MemberDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			DBManager.close(conn, pstmt);
+			DBManager.close(conn, pstmt, rs);
 		}
 		return result;
 	}
+	
+	public int confirmNick(String mem_nick) {
+		int result = -1;
+		String sql = "select mem_nick from member where mem_nick=?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, mem_nick);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = 1;
+			} else {
+				result = -1;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
+	}
+	
+	public List<MemberVO> getMemberList() {
+		
+		String sql = "select * from member";
+		
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		
+		List<MemberVO> list = new ArrayList<MemberVO>();
+		MemberDAO mDao = MemberDAO.getInstance();
+		
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			
+			while(rs.next()) {
+				
+				MemberVO mVo = new MemberVO();
+			
+				mVo.setMem_no(rs.getInt("mem_no"));
+				mVo.setMem_auth(rs.getInt("mem_auth"));
+				mVo.setMem_id(rs.getString("mem_id"));
+				mVo.setMem_nick(rs.getString("mem_nick"));
+				mVo.setMem_mail(rs.getString("mem_mail"));
+				mVo.setMem_phone(rs.getString("mem_phone"));
+				mVo.setBrd_cnt(mDao.getBoardCount(rs.getInt("mem_no")));
+				mVo.setBrpl_cnt(mDao.getReplyCount(rs.getInt("mem_no")));
+				
+				System.out.println(rs.getInt("mem_no"));
+				
+				list.add(mVo);
+				
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	
+	public int getBoardCount(int mem_no) {
+		String sql = "select count(*) as count from BOARD group by mem_no having MEM_NO = ?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_no);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
+	}
+	
+	public int getReplyCount(int mem_no) {
+		String sql = "select count(*) as count from BOARD_REPLY group by mem_no having MEM_NO =?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int result = 0;
+		
+		try {
+			conn = DBManager.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, mem_no);
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt("count");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, pstmt, rs);
+		}
+		return result;
+	}
+
+
 
 }

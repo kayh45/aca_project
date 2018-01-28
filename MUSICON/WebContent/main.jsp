@@ -79,7 +79,7 @@
 						<td class = "btn_grp">
 						<input id = "logout" type = "button" value = "로그아웃" onclick = "location.href = 'member.do?command=member_logout'">
 						<input type = "button" value = "내 정보보기" onclick = "location.href = 'member.do?command=member_info'">
-						<input type = "button" value = "회원관리"></td>
+						<input type = "button" value = "회원관리" onclick = "location.href = 'member.do?command=member_list'"></td>
 						<td/>				
 					</tr>													
 				</table>

@@ -91,7 +91,7 @@ public class PerformanceDAO {
 	
 	public String getKeyword(int pfm_no) {	
 		PerformKeywordDAO pkDao = PerformKeywordDAO.getInstance();
-		List<String> keywordList = pkDao .getKeywordName(pfm_no);
+		List<String> keywordList = pkDao.getKeywordName(pfm_no);
 		String words = "";
 		int i = 0;
 		for(String word:keywordList) {					

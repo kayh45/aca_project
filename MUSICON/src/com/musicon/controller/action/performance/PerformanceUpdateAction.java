@@ -2,6 +2,7 @@ package com.musicon.controller.action.performance;
 
 import java.io.IOException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +16,8 @@ import com.musicon.dto.PerformanceVO;
 		@Override
 		public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
+			String url = "perform.do?command=performance_view&pfm_no=" + request.getParameter("pfm_no");
+			
 			PerformanceVO pVo = new PerformanceVO();
 			
 			pVo.setPfm_subject(request.getParameter("pfm_subject"));
@@ -25,12 +28,14 @@ import com.musicon.dto.PerformanceVO;
 			pVo.setPfm_content(request.getParameter("pfm_content"));
 			pVo.setPfm_div(request.getParameter("pfm_div"));
 			pVo.setPfm_reg(request.getParameter("pfm_reg"));
+			pVo.setPfm_pic(request.getParameter("pfm_pic"));
 			pVo.setPfm_no(Integer.parseInt(request.getParameter("pfm_no")));
 			
 			PerformanceDAO pDao = PerformanceDAO.getInstance();
 			pDao.updatePerformance(pVo);
 			
-			new PerformanceListAction().execute(request, response);
+			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+			dispatcher.forward(request, response);
 		}
 
 	}

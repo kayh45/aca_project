@@ -13,10 +13,27 @@ function idCheck() {
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
+function nickCheck() {
+	if (document.frm.mem_nick.value == "") {
+		alert('닉네임을 입력하여 주십시오.');
+		document.form.mem_nick.focus();
+		return;
+	}
+	var mem_nick = encodeURIComponent(document.frm.mem_nick.value);
+	var url = "member.do?command=member_nick_check&mem_nick=" + mem_nick;
+	window.open(url, "_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
 
 function idok() {
 	opener.frm.mem_id.value = document.frm.mem_id.value;
 	opener.frm.id_check.value = document.frm.mem_id.value;
+	self.close();
+}
+
+function nickok() {
+	opener.frm.mem_nick.value = document.frm.mem_nick.value;
+	opener.frm.nick_check.value = document.frm.mem_nick.value;
 	self.close();
 }
 
@@ -49,5 +66,15 @@ function joinCheck() {
 		alert("아이디 중복체크를 하지 않으셨습니다.");
 		document.frm.mem_id.focus();
 		return false;
+	}
+}
+
+function memDelete(mem_no) {
+	var result = confirm("정말로 삭제하시겠습니까?");
+	var url = "member.do?command=member_delete&mem_no=" + mem_no;
+	if(result == true){
+		location.href = url;
+	}else {
+		
 	}
 }

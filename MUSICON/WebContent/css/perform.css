@@ -6,3 +6,13 @@
 	margin :0 5px;
 	background-color : #32a9ba;
 }
+
+.before {
+	color : #cf0e0e;
+	font-weight : bold;
+}
+
+#url {
+	width : 400px;
+}
+

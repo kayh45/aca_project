@@ -53,13 +53,18 @@
 								<c:choose>
 								<c:when test = "${boardType eq 'review'}">
 								<tr class = "title">
-									<td class = "td_subject">공연</td>									
-									<td class = "url">
-										<input type = "text" name = "pfm_subject">
-										<input type = "hidden" name = "pfm_no">
-										<%--나중에 hidden으로 바꿔줌 --%>
-										<input id = "srch_btn" type = "button" value = "검색">
-										${inform}
+									<td class = "td_subject">공연</td>
+									<td>	
+									<div class = "info">
+										<img src = "${pfm_pic}" width = "100px">
+									</div>								
+									<div id = "write" class = "info">
+										<p>공연명: ${pfm_subject}</p>
+										<p>출연: ${pfm_actor}</p>
+										<p>장소: ${pfm_loc}</p>
+										<input value = "${pfm_no}"type = "hidden" name = "pfm_no">
+										<%--나중에 hidden으로 바꿔줌 --%>					
+									</div>
 									</td>
 								</tr>
 								</c:when>
