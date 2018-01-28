@@ -48,14 +48,31 @@ function vidPreview() {
 	
 }
 
-function open_win(url, name) {
-	window.open(url, name, "width=500, height=230");
+function addLike(brd_no, boardType) {
+	
+	var result = confirm("정말 좋아요?");
+	
+	var url = "board.do?command=board_like&brd_no=" + brd_no + "&boardType=" + boardType;
+	
+	if(result == true){
+		location.href = url;
+	}else {
+		
+	}
 }
 
-function passCheck() {
-	if (document.frm.pass.value.length == 0) {
-		alert("비밀번호를 입력하세요.");
-		return false;
+function rereply(nick) {
+	var content = document.reply.brpl_content.value;
+	
+	document.reply.brpl_content.value = "To." + nick + "  " + content;
+}
+
+function replyDeleteConfirm(brpl_no, boardType){
+	var result = confirm("정말로 삭제하시겠습니까?");
+	var url = "board.do?command=brpl_delete&brpl_no=" + brpl_no + "&boardType=" + boardType;
+	if(result == true){
+		location.href = url;
+	}else {
+		
 	}
-	return true;
 }

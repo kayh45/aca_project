@@ -40,7 +40,7 @@ public class MainServelt extends HttpServlet {
 				action.execute(request, response);
 			}
 		}else {
-			String url = "index.jsp";
+			String url = "main.jsp";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);

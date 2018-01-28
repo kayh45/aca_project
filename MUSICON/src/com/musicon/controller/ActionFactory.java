@@ -1,7 +1,19 @@
 package com.musicon.controller;
 
 import com.musicon.controller.action.Action;
-import com.musicon.controller.action.brpl.BrplWriteAction;
+import com.musicon.controller.action.MainAction;
+import com.musicon.controller.action.board.BoardDeleteAction;
+import com.musicon.controller.action.board.BoardLikeAddAction;
+import com.musicon.controller.action.board.BoardListAction;
+import com.musicon.controller.action.board.BoardListSearchAction;
+import com.musicon.controller.action.board.BoardMainAction;
+import com.musicon.controller.action.board.BoardUpdateAction;
+import com.musicon.controller.action.board.BoardUpdateFormAction;
+import com.musicon.controller.action.board.BoardViewAction;
+import com.musicon.controller.action.board.BoardWriteAction;
+import com.musicon.controller.action.board.BoardWriteFormAction;
+import com.musicon.controller.action.board.BrplDeleteAction;
+import com.musicon.controller.action.board.BrplWriteAction;
 import com.musicon.controller.action.member.MemberIdCheckAction;
 import com.musicon.controller.action.member.MemberInfoAction;
 import com.musicon.controller.action.member.MemberJoinAction;
@@ -16,13 +28,6 @@ import com.musicon.controller.action.performance.PerformanceSearchAllAction;
 import com.musicon.controller.action.performance.PerformanceViewAction;
 import com.musicon.controller.action.performance.PerformanceWriteAction;
 import com.musicon.controller.action.performance.PerformanceWriteFormAction;
-import com.musicon.controller.action.review.BoardDeleteAction;
-import com.musicon.controller.action.review.BoardListAction;
-import com.musicon.controller.action.review.BoardUpdateAction;
-import com.musicon.controller.action.review.BoardUpdateFormAction;
-import com.musicon.controller.action.review.BoardViewAction;
-import com.musicon.controller.action.review.BoardWriteAction;
-import com.musicon.controller.action.review.BoardWriteFormAction;
 
 public class ActionFactory {
 
@@ -45,6 +50,10 @@ public class ActionFactory {
 	
 		if(command.equals("board_list")){
 			action = new BoardListAction();
+		} else if(command.equals("board_list_search")){
+			action = new BoardListSearchAction();
+		} else if(command.equals("board_main")){
+			action = new BoardMainAction();
 		} else if(command.equals("board_write_form")){
 			action = new BoardWriteFormAction();
 		} else if(command.equals("board_write")){
@@ -55,10 +64,14 @@ public class ActionFactory {
 			action = new BoardUpdateFormAction();
 		} else if(command.equals("board_update")){
 			action = new BoardUpdateAction();
+		} else if(command.equals("board_like")){
+			action = new BoardLikeAddAction();
 		} else if (command.equals("board_delete")){
 			action = new BoardDeleteAction();
 		} else if (command.equals("brpl_write")){
 			action = new BrplWriteAction();
+		} else if (command.equals("brpl_delete")){
+			action = new BrplDeleteAction();
 		} else if (command.equals("member_join_form")){
 			action = new MemberJoinFormAction();
 		} else if (command.equals("member_join")){
@@ -87,6 +100,8 @@ public class ActionFactory {
 			action = new PerformanceSearchAllAction();
 		} else if (command.equals("performance_delete")){
 			action = new PerformanceDeleteAction();
+		} else if (command.equals("main")){
+			action = new MainAction();
 		}
 		
 		return action;

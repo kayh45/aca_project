@@ -125,8 +125,12 @@
 						</nav>
 						</div>
 						<div class = "boardsearch">
-							<input type = "text">
+						<form method = "post" action = "board.do">
+							<input type = "hidden" name = "command" value = "board_list_search"> 
+							<input type = "hidden" name = "boardType" value = "${boardType}"> 
+							<input type = "text" name = "search">
 							<input type = "submit" value = "검색">
+						</form>
 						</div>    		
 				</div>
 			</div>

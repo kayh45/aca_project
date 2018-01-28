@@ -12,7 +12,7 @@
 						<span class = bt_text>공연검색</span>
 					</button>
 					
-					<button type="button" class="btn btn-link" onclick = "location.href= 'main.do'">
+					<button type="button" class="btn btn-link" onclick = "location.href= 'main.do?command=main'">
 						<img src = "img/icon2.png">
 					</button>
 					

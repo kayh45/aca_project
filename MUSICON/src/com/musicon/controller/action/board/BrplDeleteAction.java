@@ -1,4 +1,4 @@
-package com.musicon.controller.action.brpl;
+package com.musicon.controller.action.board;
 
 import java.io.IOException;
 
@@ -11,24 +11,33 @@ import com.musicon.controller.action.Action;
 import com.musicon.dao.BoardDAO;
 import com.musicon.dto.BoardReplyVO;
 
-public class BrplWriteAction implements Action{
+public class BrplDeleteAction implements Action {
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "BoardServlet?command=board_view&brd_no=";
-		url += request.getParameter("brd_no");
+	
+		int brpl_no = Integer.parseInt(request.getParameter("brpl_no"));
+		String boardType = request.getParameter("boardType");
+		
+		
 		
 		BoardReplyVO bVo = new BoardReplyVO();
 
-		bVo.setBrd_no(Integer.parseInt(request.getParameter("brd_no")));
-		bVo.setBrpl_content(request.getParameter("brpl_content"));
-		bVo.setMem_no(Integer.parseInt(request.getParameter("mem_no")));
-		
+		bVo.setBrpl_no(brpl_no);
+
 		BoardDAO bDao = BoardDAO.getInstance();
-		bDao.insertBrpl(bVo);
+		int brd_no = bDao.NumOfBoardInBrplNo(brpl_no);
+		bDao.deleteBrpl(bVo);		
+		
+		System.out.println(brd_no);
+		
+		String url = "board.do?command=board_view" + "&brd_no=" + brd_no + "&boardType=" + boardType;
+		
+		request.setAttribute("brd_no", brd_no);
+		request.setAttribute("boardType", boardType);
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-		dispatcher.forward(request, response);
+		dispatcher.forward(request, response);		
 	}
-	
+
 }

@@ -1,4 +1,4 @@
-package com.musicon.controller.action.review;
+package com.musicon.controller.action.board;
 
 import java.io.IOException;
 

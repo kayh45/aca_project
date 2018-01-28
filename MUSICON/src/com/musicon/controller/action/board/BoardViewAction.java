@@ -1,7 +1,6 @@
-package com.musicon.controller.action.review;
+package com.musicon.controller.action.board;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,35 +11,38 @@ import javax.servlet.http.HttpServletResponse;
 import com.musicon.controller.action.Action;
 import com.musicon.dao.BoardDAO;
 import com.musicon.dto.BoardPerformanceVO;
-import com.musicon.dto.BoardVO;
+import com.musicon.dto.BoardReplyVO;
 
-public class BoardListAction implements Action{
+public class BoardViewAction implements Action{
 
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String url = "/board/board_list.jsp";
+		String url = "/board/board_view.jsp";
 		
+		String brd_no = request.getParameter("brd_no");
 		String boardType = request.getParameter("boardType");
-		List<BoardVO> boardList = new ArrayList<BoardVO>();
-		List<BoardPerformanceVO> boardListRv = new ArrayList<BoardPerformanceVO>();
-		
-		System.out.println(boardType);
-		
+		BoardPerformanceVO bVo = null;		
 		BoardDAO bDao = BoardDAO.getInstance();
 		
-		if(boardType.equals("review")){		
-			boardListRv = bDao.selectAllReview();
-			request.setAttribute("boardList", boardListRv);
-		}else {
-			boardList = bDao.selectAllBoard(boardType);
-			request.setAttribute("boardList", boardList);
-		}		
+		bDao.addView(brd_no);
 		
+		if(boardType.equals("review")){
+			bVo = bDao.selectOneBoardReview(brd_no);
+		}else {
+			bVo = bDao.selectOneBoard(brd_no);
+		}
+
+		List<BoardReplyVO> replyList = bDao.selectAllBrpl(brd_no);
+		
+		
+		request.setAttribute("board", bVo);
+		request.setAttribute("replyList", replyList);
 		request.setAttribute("boardType", boardType);
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);
 		
 	}
-	
+
 }

@@ -99,8 +99,13 @@
 										--%>
 									</div>
 									<div class = "dtl_content" id = "btn_group">
-										<button class = "btn_like"><span>♥</span> 좋아요</button>
-										<div class = "div_like"><span>${board.brd_like}</span></div>
+										<c:if test = "${LoginUser != null}">
+										<button class = "btn_like" onclick = "addLike(${board.brd_no},'${boardType}')"><span>♥</span> 좋아요</button>
+										</c:if>
+										<c:if test = "${LoginUser == null}">
+										<button class = "btn_like" disabled><span>♥</span> 좋아요</button>
+										</c:if>										
+										<div id = "likenum" class = "div_like"><span>${board.brd_like}</span></div>
 										<button class = "btn_like">공유</button>
 										<div class = "div_like">
 											<img src = "img/twitter.png" width = "25px">
@@ -126,21 +131,23 @@
 									</div>
 								</td> 
 							</tr>
-							<c:forEach var = "board_reply" items = "${board_reply_list}">
+							<c:forEach var = "reply" items = "${replyList}">
 							<tr class = "title">
 								<td colspan = "3">
 									<div class = "dtl_comment">
 										<div class = "cmt_head">
-											<div class = "left">${board_reply.mem_nick}</div>
+											<div class = "left">${reply.mem_nick}</div>
 											<%-- ↑ 게시물테이블과 회원테이블을 조인하여 가져옴 --%>
-											<div class = "right">${board_reply.brpl_date}</div>
+											<div class = "right">${reply.brpl_date}</div>
 											<%-- ↑ YYYY-MM-DD HH-MM 형식으로 --%>
-											<div class = "right"><a href = "#" class = "rpt">신고</a></div>
-											<div class = "right"><a href = "#" class = "rpl">답글</a></div>
+											<c:if test = "${(LoginUser.mem_auth eq 1) or (LoginUser.mem_no eq reply.mem_no)}">
+											<div class = "right"><a href = "javascript:replyDeleteConfirm(${reply.brpl_no},'${boardType}')" class = "rpt">삭제</a></div>
+											</c:if>											
+											<div class = "right"><a href = "javascript:rereply('${reply.mem_nick}')" class = "rpl">답글</a></div>
 											<%-- ↑ 누르면 댓글 창에 '>>닉네임'을 넣어주는 자바스크립트 --%>
 										</div>
 										<div class = "cmt_body">
-											${board_reply.brpl_content}	
+											${reply.brpl_content}	
 										</div>
 									</div>
 								</td>
@@ -148,16 +155,32 @@
 							</c:forEach>							
 							<tr class = "title" id = "cmt">
 							<td colspan = "3">
-								<form method = "post" action = "">
-									<input type = "hidden" name = "mem_no" value = "${loginUser.mem_no}">
+								<form method = "post" action = "board.do" name = "reply">
+									<input type = "hidden" name = "mem_no" value = "${LoginUser.mem_no}">
 									<input type = "hidden" name = "brd_no" value = "${board.brd_no}">
+									<input type = "hidden" name = "boardType" value = "${boardType}">
+									<input type = "hidden" name = "command" value = "brpl_write">
+									
 									<%-- ↑ 로그인 시 만들어진 세션으로 가져옴 --%>
+									<c:choose>
+									<c:when test = "${LoginUser != null}">
 									<div class = "cmt_write">
 										<textarea name = "brpl_content" class = "write_area" rows = "4"></textarea>
 									</div>
 									<div class = "cmt_submit">
 										<button type = "submit">작성</button>
 									</div>
+									</c:when>
+									<c:when test = "${LoginUser == null}">
+									<div class = "cmt_write">
+										<textarea placeholder="로그인 후 이용하실 수 있습니다." name = "brpl_content" class = "write_area" rows = "4" readonly ></textarea>
+									</div>
+									<div class = "cmt_submit">
+										<button type = "submit" disabled>작성</button>
+									</div>
+									</c:when>
+									</c:choose>
+									
 								</form>
 								</td>
 								

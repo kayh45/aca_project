@@ -42,7 +42,7 @@ public class BoardServlet extends HttpServlet {
 		}
 				
 		} else {
-			String url = "board/board_main.jsp";
+			String url = "board.do?command=board_main";
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 			dispatcher.forward(request, response);
