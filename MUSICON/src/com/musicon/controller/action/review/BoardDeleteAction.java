@@ -14,10 +14,13 @@ public class BoardDeleteAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String brd_no = request.getParameter("brd_no");
+		String boardType = request.getParameter("boardType");
+		
 		
 		BoardDAO bDao = BoardDAO.getInstance();
 		bDao.deleteBoard(brd_no);
 		
+		request.setAttribute("boardType", boardType);
 		new BoardListAction().execute(request, response);
 		
 	}

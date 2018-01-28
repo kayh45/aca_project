@@ -8,6 +8,7 @@
 <link rel = "stylesheet" type = "text/css" href = "css/common.css">
 <link rel = "stylesheet" type = "text/css" href = "css/board.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
+<script type = "text/javascript" src="script/board.js?ver=3"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>MUSICON :: 게시판</title>
 </head>
@@ -106,16 +107,22 @@
 											<img src = "img/facebook.png" width = "25px">
 											<img src = "img/rss.png" width = "25px">
 										</div>
+										
 										<c:choose>
 											<c:when test = "${LoginUser.mem_no eq board.mem_no}">
-												<button class = "btn_delete">삭제</button>
-												<button class = "btn_like">수정</button>
+												<button class = "btn_delete" onclick = "deleteConfirm(${board.brd_no}, '${boardType}')">삭제</button>
+												<form method = "post" action = "board.do?" class = "form_inline">
+												<input type = "hidden" name = "command" value = "board_update_form">
+												<input type = "hidden" name = "boardType" value = "${boardType}">
+												<input type = "hidden" name = "brd_no" value = "${board.brd_no}">
+												<button type = "submit" class = "btn_like">수정</button>
+												</form>
 											</c:when>
 											<c:when test = "${LoginUser.mem_auth eq 1}">
-												<button class = "btn_delete">삭제</button>
+												<button class = "btn_delete" onclick = "deleteConfirm(${board.brd_no}, '${boardType}')">삭제</button>
 											</c:when>
 										</c:choose>
-									
+										
 									</div>
 								</td> 
 							</tr>

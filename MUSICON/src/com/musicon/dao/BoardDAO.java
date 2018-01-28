@@ -252,8 +252,9 @@ public class BoardDAO {
 	
 	
 	
-	public void updateReview(BoardVO bVo){
-		String sql = "update board set brd_subject=?, brd_content=? where brd_no=?";
+	public void updateBoard(BoardVO bVo, String brd_div){
+		String sql = "update board set brd_subject=?, brd_content=?, pfm_no = ?, "
+				+ "brd_pic = ?, brd_vid = ? where brd_no=?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -265,7 +266,17 @@ public class BoardDAO {
 			
 			pstmt.setString(1, bVo.getBrd_subject());
 			pstmt.setString(2, bVo.getBrd_content());
-			pstmt.setInt(3, bVo.getBrd_no());
+			
+			if(bVo.getPfm_no() != 0) {
+				pstmt.setInt(3, bVo.getPfm_no());
+			}else {
+				pstmt.setString(3, null);
+			}
+			
+			pstmt.setString(4, bVo.getBrd_pic());
+			pstmt.setString(5, bVo.getBrd_vid());
+			
+			pstmt.setInt(6, bVo.getBrd_no());
 			
 			pstmt.executeUpdate();
 		} catch(Exception e){

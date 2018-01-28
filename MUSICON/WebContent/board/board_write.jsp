@@ -25,13 +25,25 @@
 					<div id = "rsbox">
 						<form method = "post" action = "board.do" name = "frm">	
 							<input type = "hidden" name = "command" value = "board_write">					
-							<input type = "hidden" name = "boardType" value = "${boardType}">					
+							<input type = "hidden" name = "boardType" value = "${boardType}">
+							<c:choose>
+									<c:when test = "${boardType eq 'free'}">
+										<p class = "big">자유게시판 작성</p>
+									</c:when>
+									<c:when test = "${boardType eq 'review'}">
+										<p class = "big">공연 리뷰 작성</p>
+									</c:when>
+									<c:when test = "${boardType eq 'share'}">
+										<p class = "big">정보 공유 작성</p>
+									</c:when>
+									<c:when test = "${boardType eq 'photo'}">
+										<p class = "big">사진갤러리 작성</p>
+									</c:when>
+									<c:when test = "${boardType eq 'video'}">
+										<p class = "big">영상갤러리 작성</p>
+									</c:when>
+							</c:choose>			
 							<table id = "detail" class = "write_form">
-								<tr class = "title">
-									<td colspan = "2">
-										<h3>게시물 작성</h3>
-									</td>
-								</tr>
 								<tr class = "title">
 									<td class = "td_subject">제목	</td>									
 									<td class = "td_content">
@@ -82,7 +94,7 @@
 									<td></td>
 									<td>
 										<div class = "previewBox">
-											<iframe id = "vid_prv" width="500" height="300" src="https://www.youtube.com/embed/XlDa32ZbFGI" 
+											<iframe id = "vid_prv" width="500" height="300" src="" 
 											frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 										</div>
 									</td>

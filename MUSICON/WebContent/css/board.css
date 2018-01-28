@@ -50,6 +50,7 @@
 }
 
 .big {
+	padding-left : 20px;
 	margin-top : 10px;
 	font-size : 20px;
 	font-weight : bold;

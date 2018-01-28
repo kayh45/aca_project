@@ -21,6 +21,16 @@ function writeCheck() {
 }
 
 
+function deleteConfirm(brd_no, boardType) {
+	var result = confirm("정말로 삭제하시겠습니까?");
+	var url = "board.do?command=board_delete&brd_no=" + brd_no + "&boardType=" + boardType;
+	if(result == true){
+		location.href = url;
+	}else {
+		
+	}
+}
+
 
 function imgPreview() {
 	document.frm.img_prv.src = document.frm.pic_url.value;
