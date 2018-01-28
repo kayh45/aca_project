@@ -16,7 +16,7 @@
 	<div class = "bgdiv">
 		<!-- 헤더 시작 -->
 		<header>
-			<%@ include file = "../../header.jsp" %>
+			<%@ include file = "../header.jsp" %>
 		</header>
 		<!-- 헤더 끝  -->
 		<!-- 컨텐츠 시작  -->
@@ -133,7 +133,7 @@
 		</div>
 
 	<footer>
-		<%@ include file = "../../footer.jsp" %>
+		<%@ include file = "../footer.jsp" %>
 	</footer>
 </body>
 </html>

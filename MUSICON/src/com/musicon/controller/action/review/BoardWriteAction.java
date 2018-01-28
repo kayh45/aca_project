@@ -26,7 +26,7 @@ public class BoardWriteAction implements Action{
 		} else if(boardType.equals("photo")) {
 			bVo.setBrd_pic(request.getParameter("brd_pic"));			
 		}else if(boardType.equals("video")) {
-			bVo.setBrd_vid(request.getParameter("brd_vid").substring(17));		
+			bVo.setBrd_vid(request.getParameter("brd_vid"));		
 		}
 
 		BoardDAO bDao = BoardDAO.getInstance();

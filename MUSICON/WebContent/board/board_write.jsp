@@ -8,6 +8,7 @@
 <link rel = "stylesheet" type = "text/css" href = "css/common.css">
 <link rel = "stylesheet" type = "text/css" href = "css/boardWrite.css">
 <link rel = "stylesheet" type = "text/css" href = "css/bootstrap.css">
+<script type = "text/javascript" src="script/board.js?ver=3"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>MUSICON :: 게시물 작성</title>
 </head>
@@ -22,7 +23,7 @@
 					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
-						<form method = "post" action = "board.do">	
+						<form method = "post" action = "board.do" name = "frm">	
 							<input type = "hidden" name = "command" value = "board_write">					
 							<input type = "hidden" name = "boardType" value = "${boardType}">					
 							<table id = "detail" class = "write_form">
@@ -43,7 +44,7 @@
 									<td class = "td_subject">공연</td>									
 									<td class = "url">
 										<input type = "text" name = "pfm_subject">
-										<input type = "text" name = "pfm_no">
+										<input type = "hidden" name = "pfm_no">
 										<%--나중에 hidden으로 바꿔줌 --%>
 										<input id = "srch_btn" type = "button" value = "검색">
 										${inform}
@@ -54,17 +55,36 @@
 									<tr class = "title">
 									<td class = "td_subject">사진 URL</td>									
 									<td class = "url">
-										<input type = "text" name = "brd_pic">
-										<input id = "srch_btn" type = "button" value = "미리보기">
+										<input type = "text" name = "pic_url">
+										<input type = "hidden" name = "brd_pic">
+										<input id = "srch_btn" type = "button" value = "적용" onclick = "imgPreview()">
+									</td>
+								</tr>
+								<tr class = "title">
+									<td></td>
+									<td>
+										<div class = "previewBox">
+											<img name = "img_prv" src = "">
+										</div>
 									</td>
 								</tr>
 								</c:when>
 								<c:when test = "${boardType eq 'video'}">
 									<tr class = "title">
-									<td class = "td_subject">유튜브 공유 URL</td>									
+									<td class = "td_subject">유튜브 URL</td>									
 									<td class = "url">
-										<input type = "text" name = "brd_vid">
-										<input id = "srch_btn" type = "button" value = "미리보기">
+										<input type = "text" name = "vid_url">
+										<input type = "hidden" name = "brd_vid">
+										<input id = "srch_btn" type = "button" value = "적용" onclick = "vidPreview()">
+									</td>
+								</tr>
+								<tr class = "title">
+									<td></td>
+									<td>
+										<div class = "previewBox">
+											<iframe id = "vid_prv" width="500" height="300" src="https://www.youtube.com/embed/XlDa32ZbFGI" 
+											frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+										</div>
 									</td>
 								</tr>
 								</c:when>
@@ -78,7 +98,7 @@
 								</tr>
 								<tr class = "title">
 									<td colspan = "2" id = "button_grp">
-										<input type = "submit" value = "작성">
+										<input type = "submit" value = "작성" onclick = "return writeCheck()">
 										<input type = "button" value = "취소" onclick = "javascript:'history.go(-1)'">
 									</td>
 								</tr>

@@ -522,3 +522,11 @@ textarea {
 		text-align : left;
 	
 	}
+	
+.previewBox img{
+		width : 300px;
+}
+
+.url input[type = text] {
+	width : 400px;
+}

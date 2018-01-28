@@ -109,6 +109,7 @@
 
 .title {
 	border-bottom : solid 1px #ddd;
+	text-align : center;
 }
 
 #rsbox tr:hover:not(.title) {
