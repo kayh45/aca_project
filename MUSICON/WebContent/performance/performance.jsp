@@ -110,7 +110,9 @@
 						<tr>
 							<td class = "category">${performance.pfm_div}/${performance.pfm_reg}/${performance.pfm_keywords}</td>
 							<td class = "picture"><img src = "${performance.pfm_pic}"></td>
-							<td class = "subject"><a href = "perform.do?command=performance_view&pfm_no=${performance.pfm_no}">${performance.pfm_subject}</a></td>
+							<td class = "subject">
+							<div class = "oneline" id = "sub"><a href = "perform.do?command=performance_view&pfm_no=${performance.pfm_no}">${performance.pfm_subject}</a>
+							</div></td>
 							<td class = "location">${performance.pfm_loc}</td>
 							<td class = "date">
 							<fmt:parseDate var="startDate" value = "${performance.pfm_start}" pattern = "yyyy-MM-dd HH:mm:ss"/>
@@ -124,27 +126,7 @@
 						</c:forEach>
 						
 					</table>
-					<div class = "pageno">
-						<nav>
-						  <ul class="pagination">
-						    <li class = "disabled">
-						      <a href="#" aria-label="Previous">
-						        <span aria-hidden="true">&laquo;</span>
-						      </a>
-						    </li>
-						    <li class = "active"><a href="#">1</a></li>
-						    <li><a href="#">2</a></li>
-						    <li><a href="#">3</a></li>
-						    <li><a href="#">4</a></li>
-						    <li><a href="#">5</a></li>
-						    <li>
-						      <a href="#" aria-label="Next">
-						        <span aria-hidden="true">&raquo;</span>
-						      </a>
-						    </li>
-						  </ul>
-						</nav>
-					</div>
+	
 				</div>
 			</div> <!-- rsbox  -->
 		</div>

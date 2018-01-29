@@ -226,3 +226,21 @@
 textarea {
 	resize: none;
 }
+
+.oneline {
+		display: inline-block; 
+		white-space: nowrap; 
+		width : 260px;
+		overflow: hidden; 
+		text-overflow: ellipsis;
+	}
+	
+#sub a,
+#sub a:hover {
+		color : black;
+		text-decoration : none;
+		font-size : 14px;		
+	}
+.date {
+	width : 15%;
+}
