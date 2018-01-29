@@ -83,7 +83,13 @@
 							</c:choose>
 							</td>
 							</c:if>
-							<td class = "subject"><a href = "board.do?command=board_view&boardType=${boardType}&brd_no=${board.brd_no}">${board.brd_subject}</a></td>
+							<td class = "subject">
+							<div class = "oneline">
+								<a href = "board.do?command=board_view&boardType=${boardType}&brd_no=${board.brd_no}">
+								${board.brd_subject}
+								</a>
+							</div>
+							</td>
 							<td class = "name">${board.mem_nick}</td>
 							<%-- ↑ 게시물테이블과 회원테이블을 조인하여 가져옴 --%>
 							<td class = "date">${board.brd_date}</td>

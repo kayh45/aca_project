@@ -82,7 +82,7 @@
 					<tr class = "button_grp">
 						<td colspan = "2">							
 							<input type = "submit" value = "정보 수정">
-							<input type = "button" value = "뒤로가기" onclick = "location.href='main.do'">
+							<input type = "button" value = "뒤로가기" onclick = "location.href='main.do?command=main'">
 						</td>
 					</tr>									
 				</table>			

@@ -25,6 +25,18 @@ function nickCheck() {
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
+function nickUpdateCheck() {
+	if (document.frm.mem_nick.value.length == 0) {
+		alert('닉네임을 입력하여 주십시오.');
+		document.form.mem_nick.focus();
+		return;
+	}
+	var mem_nick = encodeURIComponent(document.frm.mem_nick.value);
+	var url = "member.do?command=member_nick_check&mem_nick=" + mem_nick;
+	window.open(url, "_blank_1",
+					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
+}
+
 function idok() {
 	opener.frm.mem_id.value = document.frm.mem_id.value;
 	opener.frm.id_check.value = document.frm.mem_id.value;

@@ -13,7 +13,7 @@
 <body>
 
 	<ul>
-		<li id = "title"><a href = "board.html">게시판목록</a></li>
+		<li id = "title"><a href = "board.do">게시판목록</a></li>
 		<li><a href = "board.do?command=board_list&boardType=free">자유게시판</a></li>
 		<li><a href = "board.do?command=board_list&boardType=review">공연 리뷰</a></li>
 		<li><a href = "board.do?command=board_list&boardType=share"">정보 공유</a></li>

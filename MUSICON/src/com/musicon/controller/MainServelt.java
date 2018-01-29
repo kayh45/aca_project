@@ -32,19 +32,13 @@ public class MainServelt extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String command = request.getParameter("command");
 		
-		if(command != null) {
 			ActionFactory af = ActionFactory.getInstance();
 			Action action = af.getAction(command);
 			
 			if(action != null) {
 				action.execute(request, response);
 			}
-		}else {
-			String url = "main.jsp";
-			
-			RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-			dispatcher.forward(request, response);
-		}
+
 	}
 
 	/**

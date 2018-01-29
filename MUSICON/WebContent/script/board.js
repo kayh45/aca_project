@@ -38,6 +38,7 @@ function imgPreview() {
 }
 
 function vidPreview() {
+	
 	var url = document.frm.vid_url.value.substr(-11);
 	var youtubeUrl = "https://www.youtube.com/embed/" + url;
 	

@@ -330,7 +330,7 @@ tr > .date {
 	width : 640;
 }
 
-td > a {
+.oneline > a {
 	text-decoration : none;
 	color : black;
 }
@@ -548,3 +548,21 @@ td > a {
 	background-color : #147bc7;
 }
 
+
+.oneline {
+	display: block; 
+	width: 250px; 
+	white-space: nowrap; 
+	overflow: hidden; 
+	text-overflow: ellipsis;
+}
+
+#minisub.oneline {
+	width: 170px;
+	text-align : center;
+}
+
+#recentsub.oneline {
+	width: 250px;
+	text-align : left;
+}

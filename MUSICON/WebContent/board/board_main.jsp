@@ -36,7 +36,9 @@
 										<ul>
 											<li><a href="board.do?command=board_view&boardType=photo&brd_no=${photoList.brd_no}"><img src="${photoList.brd_pic}" width="170px" height="130px"></a></li>
 											<li class="pic_title">
+												<div class = "oneline" id = "minisub">
 												<a href="board.do?command=board_view&boardType=photo&brd_no=${photoList.brd_no}">${photoList.brd_subject}</a>
+												</div>
 												<div class="view">
 													<img src="img/view_icon.png" width="13px">${photoList.brd_view}
 												</div>
@@ -142,7 +144,9 @@
 											<div class="common_theme">${recentList.brd_div}</div>
 										</td>
 										<td class="subject">
+										<div class = "oneline" id = "recentsub">
 											<a href="board.do?command=board_view&boardType=${recentList.brd_div}&brd_no=${recentList.brd_no}">${recentList.brd_subject}</a>
+										</div>
 										</td>
 										<td class="name">${recentList.mem_nick}</td>
 										<td class="hit">${recentList.brd_view}</td>
@@ -161,14 +165,8 @@
 	<!-- 컨텐츠 끝  -->
 
 	<!-- 푸터 시작 -->
-	<footer> <a href="#"><b>이용약관</b></a> | <a href="#"><b>개인정보처리방침
-	</b></a> | <a href="#"><b>이메일무단수집거부 </b></a> | <a href="#"><b>제휴문의</b></a>
-	<br>
-	<br>
-	<p>뮤지콘닷컴 대전광역시 동구 홍도동 86-19 | 대표자: 강현 | 등록일: 2017.12.19</p>
-	<p>위 내용에 대한 저작권 및 법적 책임은 자료제공사 또는 글쓴이에 있으며 musicon.com의 입장과 다를 수
-		있습니다.</p>
-	<p>Copyright &copy; KayhMann All Rights Reserved.</p>
+	<footer>
+	<%@ include file = "../footer.jsp" %>
 	</footer>
 	<!-- 푸터 끝  -->
 </body>
