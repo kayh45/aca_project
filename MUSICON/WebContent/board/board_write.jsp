@@ -99,7 +99,7 @@
 									<td></td>
 									<td>
 										<div class = "previewBox">
-											<iframe id = "vid_prv" width="500" height="300" src="" 
+											<iframe name = "vid_prv" id = "vid_prv" width="500" height="300" src="https://www.youtube.com/embed/" 
 											frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 										</div>
 									</td>

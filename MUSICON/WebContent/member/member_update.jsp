@@ -30,7 +30,7 @@
 			<div class = "join_form">
 			<h2 id = "top_sub">회원 정보 수정</h2>
 			<hr>
-			<form method = "post" action = "member.do">
+			<form method = "post" action = "member.do" name = "frm">
 			<input type = "hidden" value = "member_update" name = "command">
 			
 				<table class = "join_table">
@@ -42,7 +42,9 @@
 					</tr>
 					<tr>
 						<td class = "lbl">닉네임</td>
-						<td class = "input"><input type = "text" name = "mem_nick" value = "${member.mem_nick}"></td>
+						<td class = "input">
+						<input type = "hidden" name = "mem_nick2" value = "${member.mem_nick}">
+						<input type = "text" name = "mem_nick" value = "${member.mem_nick}"></td>
 						<td class = "must">*</td>
 						<td><input type = "button" class = "check_btn" onclick = "return nickUpdateCheck()" value = "중복검사"></td>
 					</tr>

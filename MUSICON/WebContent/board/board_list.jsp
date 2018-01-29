@@ -70,7 +70,7 @@
 							</c:when>
 							<c:when  test = "${board.pfm_div == '뮤지컬'}">
 							<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
-								<div class = "musial">뮤지컬</div>
+								<div class = "musical">뮤지컬</div>
 							</c:when>
 							<c:when  test = "${board.pfm_div == '연극'}">
 							<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
@@ -80,17 +80,22 @@
 							<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
 								<div class = "classic">클래식</div>
 							</c:when>
+							<c:when  test = "${board.pfm_div == '무용'}">
+							<%-- ↑ 게시물테이블과 공연테이블을 조인하여 가져옴 --%>
+								<div class = "dance">무용</div>
+							</c:when>
 							</c:choose>
 							</td>
 							</c:if>
-							<td class = "subject">
+							<td class = "subject" id ="boardlist">
 							<div class = "oneline">
 								<a href = "board.do?command=board_view&boardType=${boardType}&brd_no=${board.brd_no}">
 								${board.brd_subject}
 								</a>
 							</div>
 							</td>
-							<td class = "name">${board.mem_nick}</td>
+							
+							<td class = "name"><div class = "oneline" id = "nick">${board.mem_nick}</div></td>
 							<%-- ↑ 게시물테이블과 회원테이블을 조인하여 가져옴 --%>
 							<td class = "date">${board.brd_date}</td>
 							<td class = "hit">${board.brd_view}</td>

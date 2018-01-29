@@ -329,6 +329,33 @@ public class PerformanceDAO {
 		return list;
 	}
 	
+	public Set<String> getAllpfmNo(){
+		
+		String sql = "select pfm_no from performance";
+
+		Set<String> list = new HashSet<String>();
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+
+		try {
+			conn = DBManager.getConnection();
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+
+			while (rs.next()) {
+							
+				list.add(rs.getString("pfm_no"));
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			DBManager.close(conn, stmt, rs);
+		}
+		return list;
+	}
+	
 public PerformanceVO searchByAll(String pfm_no, String pfm_div){
 		
 		String sql = "select * from performance where pfm_no = '" + pfm_no + "' and pfm_div = '" + pfm_div + "'";

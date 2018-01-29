@@ -20,19 +20,23 @@ function nickCheck() {
 		return;
 	}
 	var mem_nick = encodeURIComponent(document.frm.mem_nick.value);
-	var url = "member.do?command=member_nick_check&mem_nick=" + mem_nick;
+	var url = "member.do?command=member_nick_check&script=yes&mem_nick=" + mem_nick;
 	window.open(url, "_blank_1",
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }
 
 function nickUpdateCheck() {
-	if (document.frm.mem_nick.value.length == 0) {
+	
+	if (document.frm.mem_nick.value == "") {
 		alert('닉네임을 입력하여 주십시오.');
-		document.form.mem_nick.focus();
+		document.frm.mem_nick.focus();
 		return;
 	}
+	
 	var mem_nick = encodeURIComponent(document.frm.mem_nick.value);
-	var url = "member.do?command=member_nick_check&mem_nick=" + mem_nick;
+	var mem_nick2 = encodeURIComponent(document.frm.mem_nick2.value);
+	
+	var url = "member.do?command=member_nick_update_check&script=yes&mem_nick=" + mem_nick + "&mem_nick2=" + mem_nick2;
 	window.open(url, "_blank_1",
 					"toolbar=no, menubar=no, scrollbars=yes, resizable=no, width=450, height=200");
 }

@@ -420,8 +420,8 @@ public class BoardDAO {
 	}
 	
 	public List<BoardVO> selectTopPhoto() {
-		String sql = "select * from board b, member m where b.mem_no = m.mem_no "
-				+ "and brd_div = 'photo' and rownum <= 3 order by brd_like desc, brd_view desc";
+		String sql = "select * from (select * from board where brd_div = 'photo' "
+				+ "order by brd_like desc, brd_view desc) b, member m where rownum <=3 and b.mem_no = m.mem_no";
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
@@ -461,8 +461,8 @@ public class BoardDAO {
 	}
 
 	public List<BoardVO> selectTopVideo() {
-		String sql = "select * from board b, member m where b.mem_no = m.mem_no "
-				+ "and brd_div = 'video' and rownum <= 2 order by brd_like desc, brd_view desc";
+		String sql = "select * from (select * from board where brd_div = 'video' "
+				+ "order by brd_like desc, brd_view desc) b, member m where rownum <=2 and b.mem_no = m.mem_no";
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
@@ -501,8 +501,8 @@ public class BoardDAO {
 	}
 	
 	public List<BoardVO> selectTopBoard(String brd_div) {
-		String sql = "select * from board b, member m where b.mem_no = m.mem_no "
-				+ "and brd_div = ? and rownum <= 4 order by brd_like desc, brd_view desc";
+		String sql = "select * from (select * from board where brd_div = ? "
+				+ "order by brd_like desc, brd_view desc) b, member m where rownum <=3 and b.mem_no = m.mem_no";
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
@@ -543,8 +543,8 @@ public class BoardDAO {
 	}
 	
 	public List<BoardVO> selectRecentBoard() {
-		String sql = "select * from board b, member m where b.mem_no = m.mem_no "
-				+ "and rownum <= 5 order by brd_date desc";
+		String sql = "select * from (select * from board order by brd_no desc) b, member m "
+				+ "where rownum <=5 and b.mem_no = m.mem_no";
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
@@ -606,7 +606,7 @@ public class BoardDAO {
 
 		
 		public List<BoardVO> selectTopBoard() {
-			String sql = "select * from board where rownum <= 5 order by brd_like desc, brd_view desc";
+			String sql = "select * from (select * from board order by brd_like desc, brd_view desc) where rownum <=5";
 
 			List<BoardVO> list = new ArrayList<BoardVO>();
 			Connection conn = null;

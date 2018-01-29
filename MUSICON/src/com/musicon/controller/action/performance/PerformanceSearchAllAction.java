@@ -59,15 +59,18 @@ public class PerformanceSearchAllAction implements Action {
 			set.addAll(kwdSet);
 		}else if(keywords==null && regs!=null) {		
 			set.addAll(regSet);
+		}else {
+			set.addAll(pDao.getAllpfmNo());
 		}
 		
 		
 		set.retainAll(pDao.searchBySubject(search));
 		
 		
+		
 		for(String pfm_no:set) { // set의 공연번호와 분류를 기준으로 list를 만듦	
 			if(pfm_div.equals("전체")){
-				if(pDao.searchByAll(pfm_no).getPfm_no() != 0){
+				if(pDao.searchByAll(pfm_no).getPfm_no() != 0){					
 					performanceList.add(pDao.searchByAll(pfm_no));
 				}
 			}else {	

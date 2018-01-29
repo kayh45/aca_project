@@ -220,7 +220,7 @@
 	.view, .like {
 	display : inline;
 	float : right;
-	width : 35px;
+	width : 50px;
 	margin : 3px;
 	text-align : left;
 	}
@@ -236,3 +236,23 @@
 		text-align : right;	
 	}
 	
+	.oneline {
+		display: inline-block; 
+		white-space: nowrap; 
+		overflow: hidden; 
+		text-overflow: ellipsis;
+	}
+
+	#halfsub.oneline {
+		width: 200px;
+		text-align : left;
+	}
+	
+	#posted li {
+		margin-bottom : 3px;
+	}
+	
+	.icon_grp {
+		display : inline-block;
+		width : 100%;
+	}

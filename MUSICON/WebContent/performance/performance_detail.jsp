@@ -10,7 +10,7 @@
 <link rel = "stylesheet" type = "text/css" href = "css/detailInfo.css">
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>Musicon :: ${performance.pfm_subject} 공연 상세보기</title>
 </head>
 <body>
 	

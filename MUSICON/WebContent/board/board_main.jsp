@@ -62,7 +62,9 @@
 									<c:forEach var="reviewList" items="${reviewList}">
 										<li>
 											<div class="subject">
+											<div class = "oneline" id = "halfsub">
 												<a href="board.do?command=board_view&boardType=review&brd_no=${reviewList.brd_no}">${reviewList.brd_subject}</a>
+											</div>
 											</div>
 											<div class="like">
 												<img src="img/view_icon.png" width="13px">${reviewList.brd_view}
@@ -85,7 +87,9 @@
 									<c:forEach var="shareList" items="${shareList}">
 										<li>
 											<div class="subject">
+											<div class = "oneline" id = "halfsub">
 												<a href="board.do?command=board_view&boardType=share&brd_no=${shareList.brd_no}">${shareList.brd_subject}</a>
+											</div>
 											</div>
 											<div class="like">
 												<img src="img/view_icon.png" width="13px">${shareList.brd_view}
@@ -112,7 +116,9 @@
 											<iframe width="250" height="150" src="https://www.youtube.com/embed/${videoList.brd_vid}" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen>
 											</iframe>
 										</li>
-										<li class="pic_title"><a href="board.do?command=board_view&boardType=video&brd_no=${videoList.brd_no}">${videoList.brd_subject}</a><br>
+										<li class="pic_title">
+										<a href="board.do?command=board_view&boardType=video&brd_no=${videoList.brd_no}">${videoList.brd_subject}
+										</a><br>
 											<div class="like">
 												<img src="img/view_icon.png" width="13px">${videoList.brd_view}
 											</div>

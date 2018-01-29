@@ -154,9 +154,9 @@
 	padding : 1px;
 	width : 40px;
 	height : 20px;
-	background-color : #ffd9a6;
-	color : #e88500;
-	border : solid 1px #e88500;
+	background-color : #b0f5a9;
+	color : #29cc17;
+	border : solid 1px #29cc17;
 }
 .theme > .classic {
 	border-radius : 2px;
@@ -179,6 +179,16 @@
 	border : solid 1px #e91253;
 }
 .theme > .musical {
+	border-radius : 2px;
+	margin : 1px auto;
+	padding : 1px;
+	width : 40px;
+	height : 20px;
+	background-color : #ed9c8b;
+	color : #da4121;
+	border : solid 1px #da4121;
+}
+.theme > .dance {
 	border-radius : 2px;
 	margin : 1px auto;
 	padding : 1px;
@@ -565,4 +575,18 @@ tr > .date {
 #recentsub.oneline {
 	width: 250px;
 	text-align : left;
+}
+
+#halfsub.oneline {
+	width: 220px;
+	text-align : left;
+}
+
+#nick.oneline {
+	width: 80px;
+	text-align : center;
+}
+
+#boardlist {
+	border-bottom : solid 1px #ddd;
 }

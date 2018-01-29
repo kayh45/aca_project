@@ -11,11 +11,12 @@
 </head>
 <body>
 	<h2>닉네임 중복확인</h2>
-	<form action="member.do?command=member_nick_check" method="post" name="frm">
-		닉네임 <input type = "text" name="mem_nick" value="${mem_nick}"> 
-			 <input type = "hidden" name = "script" value ="no">
+	<form action="member.do?command=member_nick_update_check" method="post" name="frm">
+		닉네임 <input type = "text" name="mem_nick" value="${mem_nick}">
+			<input type = "hidden" name="mem_nick2" value="${mem_nick}"> 
+			 <input type = "hidden" name = "script" value ="no"> 
 			 <input type = "submit" value = "중복 체크"><br>
-		<c:if test="${result == 1}">
+		<c:if test="${result == 1 and (mem_nick != mem_nick2)}">
 			<script type="text/javascript">
 				opener.document.frm.mem_nick.value = "";
 			</script>
@@ -23,6 +24,10 @@
 		</c:if>
 		<c:if test="${result==-1}">
 		${mem_nick}는 사용 가능한 닉네임입니다.
+		<input type="button" value="사용" class="cancel" onclick="nickok()">
+		</c:if>
+		<c:if test="${(mem_nick eq mem_nick2)}">
+		${mem_nick}는 당신이 현재 사용중인 닉네임입니다.
 		<input type="button" value="사용" class="cancel" onclick="nickok()">
 		</c:if>
 	</form>

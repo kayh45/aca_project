@@ -45,7 +45,7 @@ function vidPreview() {
 	document.getElementById("vid_prv").src = youtubeUrl;
 	document.frm.brd_vid.value = url;
 
-	document.getElementById("vid_prv").contentDocument.location.reload();
+	document.getElementById("vid_prv").contentWindow.location.reload(true);
 	
 }
 

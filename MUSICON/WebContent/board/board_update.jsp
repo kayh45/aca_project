@@ -23,7 +23,7 @@
 					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
-						<form method = "post" action = "board.do" name = "frm">	
+						<form method = "post" action = "board.do">	
 							<input type = "hidden" name = "command" value = "board_update">					
 							<input type = "hidden" name = "boardType" value = "${boardType}">
 							<input type = "hidden" name = "brd_no" value = "${board.brd_no}">

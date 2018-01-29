@@ -137,18 +137,22 @@
 					<div id = "bottombox" class = "inner">
 						<div class = "top">
 						<!-- 나중에 게시판으로 가는 링크 추가 -->
-							<a href = "board/board.html">TOP 5 게시물</a>
+							<a href = "board.do">TOP 5 게시물</a>
 						</div>
 						<div class = "mid">
-							<ul class = "posted">
+							<ul id = "posted">
 							<c:forEach var = "topList" items = "${topList}">
-								<li>
+								<li><div class = "icon_grp">
+								<div class = "oneline" id = "halfsub">
 									<a href = "board.do?command=board_view&boardType=${topList.brd_div}&brd_no=${topList.brd_no}">${topList.brd_subject}</a>
+									</div>
+									
 									<div class="view">
 										<img src="img/view_icon.png" width="13px"><div class = "digit">${topList.brd_view}</div>
 									</div>
 									<div class="like">
 										<img src="img/heart_icon.png" width="13px"><div class = "digit">${topList.brd_like}</div>
+									</div>
 									</div>
 								</li>
 								</c:forEach>

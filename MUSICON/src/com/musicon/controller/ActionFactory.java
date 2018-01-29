@@ -23,6 +23,7 @@ import com.musicon.controller.action.member.MemberListAction;
 import com.musicon.controller.action.member.MemberLoginAction;
 import com.musicon.controller.action.member.MemberLogoutAction;
 import com.musicon.controller.action.member.MemberNickCheckAction;
+import com.musicon.controller.action.member.MemberNickUpdateCheckAction;
 import com.musicon.controller.action.member.MemberUpdateAction;
 import com.musicon.controller.action.member.MemberUpdateFormAction;
 import com.musicon.controller.action.performance.PerformanceDeleteAction;
@@ -99,6 +100,8 @@ public class ActionFactory {
 			action = new MemberIdCheckAction();
 		} else if (command.equals("member_nick_check")){
 			action = new MemberNickCheckAction();
+		} else if (command.equals("member_nick_update_check")){
+			action = new MemberNickUpdateCheckAction();
 		} else if (command.equals("performance_write_form")){
 			action = new PerformanceWriteFormAction();
 		} else if (command.equals("performance_write")){
