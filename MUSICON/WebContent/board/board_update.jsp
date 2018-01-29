@@ -23,7 +23,7 @@
 					<%@ include file = "board_menu.jsp" %>
 				</div>
 					<div id = "rsbox">
-						<form method = "post" action = "board.do">	
+						<form method = "post" action = "board.do" name = "frm">	
 							<input type = "hidden" name = "command" value = "board_update">					
 							<input type = "hidden" name = "boardType" value = "${boardType}">
 							<input type = "hidden" name = "brd_no" value = "${board.brd_no}">
@@ -57,10 +57,8 @@
 								<tr class = "title">
 									<td class = "td_subject">공연</td>									
 									<td class = "url">
-										<input type = "text" name = "pfm_subject" value = "${board.pfm_no}">
 										<input type = "hidden" name = "pfm_no" value = "${board.pfm_no}">
 										<%--나중에 hidden으로 바꿔줌 --%>
-										<input id = "srch_btn" type = "button" value = "검색">
 										${inform}
 									</td>
 								</tr>
