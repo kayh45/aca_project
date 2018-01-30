@@ -26,7 +26,7 @@
 				<h1>Error :(</h1>
 				<hr>
 				<h3>잘못된 접근입니다.</h3>
-				<a href = "main.do">메인화면으로 돌아가기</a>
+				<a href = "main.do?command=main">메인화면으로 돌아가기</a>
 			</div>
 		</div>
 		<!-- 컨텐츠 끝  -->

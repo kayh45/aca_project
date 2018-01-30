@@ -13,6 +13,9 @@
 <title>MUSICON :: 게시물 작성</title>
 </head>
 <body>
+<c:if test = "${LoginUser eq null}">
+	<% response.sendRedirect("errorpage"); %>
+</c:if>
 	<header>
 		<%@ include file = "../header.jsp" %>
 	</header>

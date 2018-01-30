@@ -256,3 +256,10 @@
 		display : inline-block;
 		width : 100%;
 	}
+	
+	.message {
+		font-weight : bold;
+		text-align : center;
+		font-size : 15px;
+		color : #3472af;
+	}

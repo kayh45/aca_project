@@ -5,7 +5,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script type = "text/javascript" src="script/member.js?ver=5"></script>
+<script type = "text/javascript" src="script/member.js?ver=8"></script>
 <link rel = "stylesheet" type = "text/css" href = "../css/common.css">
 <link rel = "stylesheet" type = "text/css" href = "../css/search.css">
 <link rel = "stylesheet" type = "text/css" href = "../css/bootstrap.css">
@@ -81,7 +81,7 @@
 					</tr>	
 					<tr class = "button_grp">
 						<td colspan = "4">							
-							<input type = "submit" value = "확인">
+							<input type = "submit" value = "확인" onclick = "return updateCheck()">
 							<input type = "button" value = "뒤로가기" onclick = "javascript:history.go(-1)">
 						</td>
 					</tr>									

@@ -35,7 +35,7 @@
 			<h2 id = "top_sub">회원리스트</h2>
 			<hr>
 				<table class = "memList">
-					<tr>
+					<tr id = "sub">
 						<td>No.</td>
 						<td>닉네임(아이디)</td>
 						<td>이메일</td>
@@ -54,12 +54,15 @@
 						<td>${member.brpl_cnt}개</td>
 						<td>
 						<c:if test = "${member.mem_auth != 1}">
-						<input type = "button" value = "삭제" onclick = "memDelete(${member.mem_no})">
+						<input class = "deleteMem" type = "button" value = "삭제" onclick = "memDelete(${member.mem_no})">
 						</c:if>
 						</td>
 					</tr>
 					</c:forEach>
 				</table>
+			    <div class = "button_grp">
+			    	<input type = "button" value = "뒤로가기" onclick = "location.href='main.do?command=main'">
+				</div>
 			</div>
 		</div>
 		<!-- 컨텐츠 끝  -->

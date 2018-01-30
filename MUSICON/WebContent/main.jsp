@@ -52,14 +52,15 @@
 						<td class = "inpt"><input type = "password" name = "mem_pw"></td>				
 					</tr>
 					<tr>
+						<td colspan = "2" class = "message">${message}</td>
+					</tr>	
+					<tr>
 						<td class = "btn_grp" colspan = "2">
 						<input type = "submit" value = "로그인">
 						<input type = "button" value = "회원가입" onclick = "location.href='board.do?command=member_join_form'">
 						</td>			
 					</tr>
-					<tr>
-						<td colspan = "2">${message}</td>
-					</tr>													
+																	
 				</table>
 				</form>	
 				</c:when>

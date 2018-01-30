@@ -16,7 +16,7 @@ public class MemberJoinAction implements Action {
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "index.jsp";
+		String url = "main.do?command=main";
 		
 		MemberVO mVo = new MemberVO();
 		
@@ -29,6 +29,8 @@ public class MemberJoinAction implements Action {
 		
 		MemberDAO mDao = MemberDAO.getInstance();
 		mDao.joinMember(mVo);
+		
+		request.setAttribute("message", "회원가입에 성공하였습니다.");
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(url);
 		dispatcher.forward(request, response);

@@ -17,7 +17,7 @@ public class MemberLoginAction implements Action{
 	@Override
 	public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String url = "index.jsp";		
+		String url = "main.do?command=main";		
 		
 		MemberVO mVo = new MemberVO();
 		HttpSession session = request.getSession();
