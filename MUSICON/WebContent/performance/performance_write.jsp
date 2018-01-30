@@ -114,7 +114,7 @@
 					<tr class = "button_grp">
 						<td colspan = "3">							
 							<input type = "submit" value = "등록" onclick="return pfmWriteCheck()">
-							<input type = "button" value = "뒤로가기" onclick = "javascript:history.go(-1)">
+							<input type = "button" value = "뒤로가기" onclick = "history.go(-1)">
 						</td>
 					</tr>									
 				</table>			

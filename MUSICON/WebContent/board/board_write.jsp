@@ -119,7 +119,7 @@
 								<tr class = "title">
 									<td colspan = "2" id = "button_grp">
 										<input type = "submit" value = "작성" onclick = "return writeCheck()">
-										<input type = "button" value = "취소" onclick = "javascript:'history.go(-1)'">
+										<input type = "button" value = "취소" onclick = "history.go(-1)">
 									</td>
 								</tr>
 							</table>
