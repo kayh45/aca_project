@@ -82,7 +82,7 @@
 					<tr class = "button_grp">
 						<td colspan = "4">							
 							<input type = "submit" value = "확인" onclick = "return updateCheck()">
-							<input type = "button" value = "뒤로가기" onclick = "javascript:history.go(-1)">
+							<input type = "button" value = "뒤로가기" onclick = "history.go(-1)">
 						</td>
 					</tr>									
 				</table>			
