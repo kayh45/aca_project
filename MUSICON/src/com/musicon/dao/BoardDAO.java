@@ -502,7 +502,7 @@ public class BoardDAO {
 	
 	public List<BoardVO> selectTopBoard(String brd_div) {
 		String sql = "select * from (select * from board where brd_div = ? "
-				+ "order by brd_like desc, brd_view desc) b, member m where rownum <=3 and b.mem_no = m.mem_no";
+				+ "order by brd_like desc, brd_view desc) b, member m where rownum <=4 and b.mem_no = m.mem_no";
 
 		List<BoardVO> list = new ArrayList<BoardVO>();
 		Connection conn = null;
