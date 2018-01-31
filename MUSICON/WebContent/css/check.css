@@ -1,0 +1,19 @@
+.sbm {
+	border: none;
+	width: 80px;
+	height: 25px;
+	font-weight : bold;
+	font-size : 15px;
+	color : white;
+	background-color: #7b99d0;
+}
+
+.cancel {
+	border: none;
+	width: 60px;
+	height: 25px;
+	font-weight : bold;
+	font-size : 15px;
+	color : white;
+	background-color: #7cc5cf;
+}

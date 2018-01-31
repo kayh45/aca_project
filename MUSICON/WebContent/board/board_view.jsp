@@ -130,6 +130,7 @@
 												<button class = "btn_delete" onclick = "deleteConfirm(${board.brd_no}, '${boardType}')">삭제</button>
 											</c:when>
 										</c:choose>
+										<button class = "btn_list" onclick = "location.href='board.do?command=board_list&boardType=${boardType}'">≡ 목록</button>
 										
 									</div>
 								</td> 

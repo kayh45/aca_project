@@ -8,13 +8,14 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="script/member.js"></script>
 <link rel = "stylesheet" type = "text/css" href = "css/member.css">
+<link rel = "stylesheet" type = "text/css" href = "css/check.css">
 </head>
 <body>
 	<h2>닉네임 중복확인</h2>
 	<form action="member.do?command=member_nick_check" method="post" name="frm">
 		닉네임 <input type = "text" name="mem_nick" value="${mem_nick}"> 
 			 <input type = "hidden" name = "script" value ="no">
-			 <input type = "submit" value = "중복 체크"><br>
+			 <input type = "submit" value = "중복 체크" class = "sbm"><br><hr>
 		<c:if test="${result == 1}">
 			<script type="text/javascript">
 				opener.document.frm.mem_nick.value = "";
